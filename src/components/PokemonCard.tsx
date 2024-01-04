@@ -25,7 +25,7 @@ export function PokemonCard(props: PokemonCardProps) {
       className="px-6 py-4 bg-[rgba(0,_0,_0,_0.10)] rounded-3xl flex gap-2 w-full max-w-[375px]"
       key={props.name}
     >
-      <div className="relative max-w-[55px] max-h-[68px] mr-6">
+      <div className="relative w-[55px] h-[68px] mr-6">
         <Image
           loading="lazy"
           src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${formattedID}.png`}
@@ -34,7 +34,7 @@ export function PokemonCard(props: PokemonCardProps) {
           alt={props.name}
         />
       </div>
-      <div className="flex flex-col flex-1 items-start">
+      <div className="flex flex-col flex-1 items-start w-full">
         <span className="text-center">
           {props.name[0].toUpperCase() + props.name.slice(1)}
         </span>

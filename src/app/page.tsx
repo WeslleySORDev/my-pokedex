@@ -2,13 +2,46 @@
 
 import { IPokemon } from "@/@types/Pokemon";
 import { PokemonCard } from "@/components/PokemonCard";
+import { SkeletonCard } from "@/components/SkeletonCard";
 import { instance } from "@/services/axios";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 
 export default function Home() {
   const [page, setPage] = useState(0);
-  const MAX_ITEMS_ON_PAGE = 25;
+  const [pageFront, setPageFront] = useState(1);
+  const MAX_ITEMS_ON_PAGE = 50;
+
+  const handleKeyDown = (event: any) => {
+    if (event.key === "Escape") {
+      event.preventDefault();
+      return setPageFront(page + 1);
+    }
+    if (event.key === "." || event.key === ",") {
+      event.preventDefault();
+    }
+    if (event.key === "Enter") {
+      event.preventDefault();
+      if (event.currentTarget.value === "") {
+        return console.log("vazio");
+      }
+      if (
+        parseInt(event.currentTarget.value) >
+        Math.ceil(1302 / MAX_ITEMS_ON_PAGE - 1)
+      ) {
+        return handlePage(Math.ceil(1302 / MAX_ITEMS_ON_PAGE - 1));
+      }
+      if (parseInt(event.currentTarget.value) <= 0) {
+        return handlePage(0);
+      }
+      return handlePage(parseInt(event.currentTarget.value) - 1);
+    }
+  };
+
+  const handlePage = (value: number) => {
+    setPage(value);
+    setPageFront(value + 1);
+  };
 
   const fetchPokemonData = async (page: number) => {
     const pokemonNames = await instance
@@ -24,7 +57,6 @@ export default function Home() {
         return pokemonData;
       })
     );
-    console.log(allPokemonData);
     return allPokemonData;
   };
   const { isLoading, error, data } = useQuery({
@@ -39,37 +71,58 @@ export default function Home() {
   return (
     <main className="flex flex-col min-h-screen gap-4 items-center justify-between relative pt-4">
       <div className="max-w-[407px] relative">
-        <div className="flex gap-4 flex-wrap min-h-screen">
-          {!isLoading ? (
-            data.map((pokemon: IPokemon) => {
-              return (
-                <PokemonCard
-                  name={pokemon.name}
-                  id={pokemon.id.toString()}
-                  image={pokemon.sprites.front_default as string}
-                  types={pokemon.types}
-                  key={pokemon.name + pokemon.id}
-                />
-              );
-            })
-          ) : (
-            <div className="flex items-center justify-center">
-              <h1>Loading...</h1>
-            </div>
-          )}
+        <div className="flex gap-4 flex-wrap min-h-screen px-4">
+          {!isLoading
+            ? data.map((pokemon: IPokemon) => {
+                return (
+                  <PokemonCard
+                    name={pokemon.name}
+                    id={pokemon.id.toString()}
+                    image={pokemon.sprites.front_default as string}
+                    types={pokemon.types}
+                    key={pokemon.name + pokemon.id}
+                  />
+                );
+              })
+            : Array.from({ length: MAX_ITEMS_ON_PAGE }, (_, i) => (
+                <SkeletonCard key={i} />
+              ))}
         </div>
         <div className="flex gap-8 items-center sticky bottom-0 bg-white w-full justify-between p-2">
           <button
             className="p-4 rounded-md bg-cyan-300 text-zinc-500"
-            onClick={() => setPage((prevState) => Math.max(prevState - 1, 0))}
+            onClick={() => handlePage(page - 1)}
             disabled={page === 0}
           >
             Anterior
           </button>
-          <span className="p-4 bg-red-300">{page + 1}</span>
+          <input
+            value={pageFront}
+            onChange={(e) => {
+              if (
+                parseInt(e.currentTarget.value) >
+                Math.ceil(1302 / MAX_ITEMS_ON_PAGE - 1)
+              ) {
+                return setPageFront(Math.ceil(1302 / MAX_ITEMS_ON_PAGE));
+              }
+              if (parseInt(e.currentTarget.value) <= 0) {
+                return setPageFront(1);
+              }
+              return setPageFront(parseInt(e.currentTarget.value));
+            }}
+            onKeyDown={handleKeyDown}
+            className={`p-4 text-center ${
+              pageFront - 1 !== page ? "bg-red-500" : "bg-red-300"
+            }`}
+            type="number"
+            min={1}
+            max={Math.ceil(1302 / MAX_ITEMS_ON_PAGE)}
+          />
+          {/* <span className="p-4 bg-red-300">{page + 1} / {Math.ceil(1302/MAX_ITEMS_ON_PAGE)}</span> */}
           <button
             className="p-4 rounded-md bg-cyan-300 text-zinc-500"
-            onClick={() => setPage((prevState) => prevState + 1)}
+            onClick={() => handlePage(page + 1)}
+            disabled={page === Math.ceil(1302 / MAX_ITEMS_ON_PAGE - 1)}
           >
             Proximo
           </button>
