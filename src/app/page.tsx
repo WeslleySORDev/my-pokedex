@@ -71,7 +71,7 @@ export default function Home() {
   return (
     <main className="flex flex-col min-h-screen gap-4 items-center justify-between relative pt-4">
       <div className="max-w-[407px] relative">
-        <div className="flex gap-4 flex-wrap min-h-screen sm:px-4 items-center">
+        <div className="flex gap-4 flex-wrap min-h-screen sm:px-4 justify-center">
           {!isLoading
             ? data.map((pokemon: IPokemon) => {
                 return (
