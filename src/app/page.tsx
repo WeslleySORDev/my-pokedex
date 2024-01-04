@@ -6,12 +6,14 @@ import Image from "next/image";
 import { useState } from "react";
 
 export default function Home() {
-  const [offset, setOffset] = useState(0);
+  const [page, setPage] = useState(0);
   const MAX_ITEMS_ON_PAGE = 25;
 
-  const fetchPokemonData = async (offset: number) => {
+  const fetchPokemonData = async (page: number) => {
     const pokemonNames = await instance
-      .get(`pokemon/?limit=${MAX_ITEMS_ON_PAGE}&offset=${offset}`)
+      .get(
+        `pokemon/?limit=${MAX_ITEMS_ON_PAGE}&offset=${page * MAX_ITEMS_ON_PAGE}`
+      )
       .then((res) => res.data.results);
     const allPokemonData: any = await Promise.all(
       pokemonNames.map(async (pokemonName: { name: string }): Promise<any> => {
@@ -25,8 +27,8 @@ export default function Home() {
   };
   const { isLoading, isError, error, data, isFetching, isPreviousData } =
     useQuery({
-      queryKey: ["pokemons", offset],
-      queryFn: () => fetchPokemonData(offset),
+      queryKey: ["pokemons", page],
+      queryFn: () => fetchPokemonData(page),
     });
 
   if (error) {
@@ -62,21 +64,15 @@ export default function Home() {
       <div className="flex gap-8 items-center">
         <button
           className="p-4 rounded-md bg-cyan-300 text-zinc-500"
-          onClick={() =>
-            setOffset((prevState) => Math.max(prevState - MAX_ITEMS_ON_PAGE, 0))
-          }
-          disabled={offset === 0}
+          onClick={() => setPage((prevState) => Math.max(prevState - 1, 0))}
+          disabled={page === 0}
         >
           Anterior
         </button>
-        <span className="p-4 bg-red-300">
-          {offset === 0 ? "1" : offset / MAX_ITEMS_ON_PAGE + 1}
-        </span>
+        <span className="p-4 bg-red-300">{page + 1}</span>
         <button
           className="p-4 rounded-md bg-cyan-300 text-zinc-500"
-          onClick={() =>
-            setOffset((prevState) => prevState + MAX_ITEMS_ON_PAGE)
-          }
+          onClick={() => setPage((prevState) => prevState + 1)}
         >
           Proximo
         </button>
