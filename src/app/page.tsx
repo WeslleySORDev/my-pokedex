@@ -70,8 +70,7 @@ export default function Home() {
 
   return (
     <main className="flex flex-col min-h-screen gap-4 items-center justify-between relative">
-      <div className="max-w-[640px] relative pt-4 px-4">
-        <div className="flex gap-4 flex-wrap sm:px-4 justify-center">
+        <div className="flex gap-2 flex-wrap px-3 py-6 max-w-[360px]">
           {!isLoading
             ? data.map((pokemon: IPokemon) => {
                 return (
@@ -86,7 +85,7 @@ export default function Home() {
                 <SkeletonCard key={i} />
               ))}
         </div>
-        <div className="flex items-center sticky bottom-0 bg-white w-full justify-between p-2">
+        {/* <div className="flex items-center sticky bottom-0 bg-white w-full justify-between p-2">
           <button
             className="p-4 rounded-md bg-cyan-300 text-zinc-500"
             onClick={() => handlePage(page - 1)}
@@ -128,8 +127,7 @@ export default function Home() {
           >
             Proximo
           </button>
-        </div>
-      </div>
+        </div> */}
     </main>
   );
 }
