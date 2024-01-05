@@ -34,7 +34,7 @@ export function PokemonCard(props: PokemonCardProps) {
           alt={props.name}
         />
       </div>
-      <div className="flex flex-col flex-1 items-start w-full">
+      <div className="flex flex-col flex-1 items-start w-full font-pokemonclassic">
         <span className="text-center">
           {props.name[0].toUpperCase() + props.name.slice(1)}
         </span>

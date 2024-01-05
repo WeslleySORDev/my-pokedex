@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: 'pokemonclassic';
+    font-style: regular;
+    font-weight: 400;
+    src: url('/fonts/PokemonClassic.ttf') format('truetype');
+  }

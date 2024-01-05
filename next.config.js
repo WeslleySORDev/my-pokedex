@@ -3,8 +3,12 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'assets.pokemon.com',
+        protocol: "https",
+        hostname: "assets.pokemon.com",
+      },
+      {
+        protocol: "https",
+        hostname: "raw.githubusercontent.com",
       },
     ],
   },
