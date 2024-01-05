@@ -9,3 +9,52 @@
     margin: 0;
   }
 }
+
+.headline {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 32px;
+}
+.subtitle-1 {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 16px;
+}
+.subtitle-2 {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 16px;
+}
+.subtitle-3 {
+  font-size: 10px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 16px;
+}
+.body-1 {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: regular;
+  line-height: 16px;
+}
+.body-2 {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: regular;
+  line-height: 16px;
+}
+.body-3 {
+  font-size: 10px;
+  font-style: normal;
+  font-weight: regular;
+  line-height: 16px;
+}
+.caption {
+  font-size: 8px;
+  font-style: normal;
+  font-weight: regular;
+  line-height: 12px;
+}
