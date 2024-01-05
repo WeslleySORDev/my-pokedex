@@ -69,8 +69,8 @@ export default function Home() {
   }
 
   return (
-    <main className="flex flex-col gap-4 items-center justify-between bg-identity-primary max-w-[360px] mx-auto p-1">
-      <div className="flex flex-col gap-2 px-3 pt-3 pb-6 w-full">
+    <main className="flex flex-col gap-4 items-center justify-between bg-identity-primary max-w-[360px] mx-auto p-1 relative">
+      <div className="flex flex-col gap-2 px-3 pt-3 pb-6 w-full sticky top-0 z-20 bg-identity-primary">
         <div className="flex gap-4 items-center">
           <div className="relative w-[24px] h-[24px]">
             <svg
