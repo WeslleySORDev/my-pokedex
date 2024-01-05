@@ -35,22 +35,27 @@ export function PokemonCard(props: PokemonCardProps) {
         />
       </div>
       <div className="flex flex-col flex-1 items-start w-full font-pokemonclassic">
-        <span className="text-center">
+        <span className="text-center max-w-64 truncate text-xs sm:text-base">
           {props.name[0].toUpperCase() + props.name.slice(1)}
         </span>
         <span>#{formattedID}</span>
       </div>
-      <div className="flex gap-1">
+      <div className="flex items-center gap-1">
         {props.types && props.types.length > 0
           ? props.types.map((type) => {
               return (
-                <Image
+                <div
                   key={props.name + props.id + type.type.name}
-                  src={`/assets/${type.type.name}.svg`}
-                  width={64}
-                  height={28}
-                  alt="Pokemon Ability"
-                />
+                  className="relative w-[48px] h-[28px] sm:w-16 sm:h-[28px]"
+                >
+                  <Image
+                    className="max-w-full max-h-full"
+                    src={`/assets/${type.type.name}.svg`}
+                    width={64}
+                    height={28}
+                    alt="Pokemon Ability"
+                  />
+                </div>
               );
             })
           : null}

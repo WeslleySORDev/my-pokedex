@@ -69,8 +69,8 @@ export default function Home() {
   }
 
   return (
-    <main className="flex flex-col min-h-screen gap-4 items-center justify-between relative pt-4">
-      <div className="max-w-[640px] relative border border-red-400">
+    <main className="flex flex-col min-h-screen gap-4 items-center justify-between relative">
+      <div className="max-w-[640px] relative border border-red-400 pt-4 px-4">
         <div className="flex gap-4 flex-wrap sm:px-4 justify-center">
           {!isLoading
             ? data.map((pokemon: IPokemon) => {
@@ -88,7 +88,7 @@ export default function Home() {
                 <SkeletonCard key={i} />
               ))}
         </div>
-        <div className="flex sm:gap-8 items-center sticky bottom-0 bg-white w-full justify-between p-2">
+        <div className="flex items-center sticky bottom-0 bg-white w-full justify-between p-2">
           <button
             className="p-4 rounded-md bg-cyan-300 text-zinc-500"
             onClick={() => handlePage(page - 1)}
