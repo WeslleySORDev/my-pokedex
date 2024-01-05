@@ -22,7 +22,7 @@ export function PokemonCard(props: PokemonCardProps) {
       : props.id;
   return (
     <div
-      className="px-6 py-4 bg-[rgba(0,_0,_0,_0.10)] rounded-3xl flex gap-2 w-full max-w-[375px]"
+      className="px-6 py-4 bg-[rgba(0,_0,_0,_0.10)] rounded-3xl flex gap-2 w-full max-w-[640px]"
       key={props.name}
     >
       <div className="relative w-[55px] h-[68px] mr-6">

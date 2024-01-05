@@ -70,8 +70,8 @@ export default function Home() {
 
   return (
     <main className="flex flex-col min-h-screen gap-4 items-center justify-between relative pt-4">
-      <div className="max-w-[407px] relative">
-        <div className="flex gap-4 flex-wrap min-h-screen sm:px-4 justify-center">
+      <div className="max-w-[640px] relative border border-red-400">
+        <div className="flex gap-4 flex-wrap sm:px-4 justify-center">
           {!isLoading
             ? data.map((pokemon: IPokemon) => {
                 return (
@@ -119,7 +119,9 @@ export default function Home() {
               min={1}
               max={Math.ceil(1302 / MAX_ITEMS_ON_PAGE)}
             />
-            <span className="hidden sm:block">de {Math.ceil(1302 / MAX_ITEMS_ON_PAGE)}</span>
+            <span className="hidden sm:block">
+              de {Math.ceil(1302 / MAX_ITEMS_ON_PAGE)}
+            </span>
           </div>
           <button
             className="p-4 rounded-md bg-cyan-300 text-zinc-500"
