@@ -27,7 +27,7 @@ export function PokemonCard(props: PokemonCardProps) {
     >
       <div className="relative w-[55px] h-[68px] mr-6">
         <Image
-          loading="lazy"
+          loading="eager"
           src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${formattedID}.png`}
           width={55}
           height={68}
