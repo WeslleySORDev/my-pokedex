@@ -78,8 +78,6 @@ export default function Home() {
                   <PokemonCard
                     name={pokemon.name}
                     id={pokemon.id.toString()}
-                    image={pokemon.sprites.front_default as string}
-                    types={pokemon.types}
                     key={pokemon.name + pokemon.id}
                   />
                 );
