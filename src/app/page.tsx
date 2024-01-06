@@ -104,7 +104,7 @@ export default function Home() {
           </button>
         </div>
       </div>
-      <div className="flex justify-center gap-2 flex-wrap px-3 py-6 bg-grayscale-white rounded-lg shadow-inner2dp max-h-[calc(100lvh-132px)] sm:max-h-[calc(100lvh-150px)] overflow-auto">
+      <div className="flex justify-center gap-2 flex-wrap w-full px-3 py-6 bg-grayscale-white rounded-lg shadow-inner2dp min-h-[calc(100lvh-132px)] max-h-[calc(100lvh-132px)] sm:max-h-[calc(100lvh-150px)] sm:min-h-[calc(100lvh-150px)] overflow-auto">
         {!isLoading
           ? data.map((pokemon: IPokemon) => {
               return (
