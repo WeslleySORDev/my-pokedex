@@ -18,7 +18,7 @@ export function Pagination({
   handleKeyDown,
 }: IPagination) {
   return (
-    <div className="flex justify-center gap-4 items-center w-full">
+    <div className="flex justify-center gap-4 items-center">
       <button
         className="fill-white disabled:invisible"
         onClick={() => handlePage(page - 1)}

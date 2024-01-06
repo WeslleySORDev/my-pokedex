@@ -73,8 +73,19 @@ export default function Home() {
 
   return (
     <main className="flex flex-col gap-4 items-center justify-between max-w-[640px] mx-auto p-1 bg-identity-primary">
-      <div className="flex flex-col gap-2 px-3 pt-3 w-full">
-        <PokemonLogo />
+      <div className="flex flex-col gap-2 px-3 pt-3 pb-6 w-full">
+        <div className="flex items-center justify-between w-full">
+          <PokemonLogo />
+          <Pagination
+            MAX_ITEMS_ON_PAGE={MAX_ITEMS_ON_PAGE}
+            handleKeyDown={handleKeyDown}
+            handlePage={handlePage}
+            page={page}
+            pageFront={pageFront}
+            setPageFront={setPageFront}
+          />
+        </div>
+
         <div className="flex gap-4 w-full">
           <CustomSearchInput />
           <button className="w-8 h-8 bg-grayscale-white rounded-2xl shadow-inner2dp flex items-center justify-center">
@@ -92,16 +103,8 @@ export default function Home() {
             </svg>
           </button>
         </div>
-        <Pagination
-          MAX_ITEMS_ON_PAGE={MAX_ITEMS_ON_PAGE}
-          handleKeyDown={handleKeyDown}
-          handlePage={handlePage}
-          page={page}
-          pageFront={pageFront}
-          setPageFront={setPageFront}
-        />
       </div>
-      <div className="flex justify-center gap-2 flex-wrap px-3 py-6 bg-grayscale-white rounded-lg shadow-inner2dp max-h-[calc(100vh-128px)] overflow-auto">
+      <div className="flex justify-center gap-2 flex-wrap px-3 py-6 bg-grayscale-white rounded-lg shadow-inner2dp max-h-[calc(100vh-150px)] overflow-auto">
         {!isLoading
           ? data.map((pokemon: IPokemon) => {
               return (
