@@ -73,7 +73,7 @@ export default function Home() {
 
   return (
     <main className="flex flex-col gap-4 items-center justify-between max-w-[640px] mx-auto p-1 bg-identity-primary">
-      <div className="flex flex-col gap-2 px-3 pt-3 pb-6 w-full">
+      <div className="flex flex-col gap-2 px-3 pt-3 w-full">
         <PokemonLogo />
         <div className="flex gap-4 w-full">
           <CustomSearchInput />
