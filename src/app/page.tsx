@@ -1,6 +1,7 @@
 "use client";
 
 import { IPokemon } from "@/@types/Pokemon";
+import { Pagination } from "@/components/Pagination";
 import { PokemonCard } from "@/components/PokemonCard";
 import { SkeletonCard } from "@/components/SkeletonCard";
 import { instance } from "@/services/axios";
@@ -131,6 +132,14 @@ export default function Home() {
             </svg>
           </button>
         </div>
+        <Pagination
+          MAX_ITEMS_ON_PAGE={MAX_ITEMS_ON_PAGE}
+          handleKeyDown={handleKeyDown}
+          handlePage={handlePage}
+          page={page}
+          pageFront={pageFront}
+          setPageFront={setPageFront}
+        />
       </div>
       <div className="flex justify-center gap-2 flex-wrap px-3 py-6 bg-grayscale-white rounded-lg shadow-inner2dp max-h-[calc(100vh-128px)] overflow-auto">
         {!isLoading
@@ -147,49 +156,6 @@ export default function Home() {
               <SkeletonCard key={i} />
             ))}
       </div>
-      {/* <div className="flex items-center sticky bottom-0 bg-white w-full justify-between p-2">
-          <button
-            className="p-4 rounded-md bg-cyan-300 text-zinc-500"
-            onClick={() => handlePage(page - 1)}
-            disabled={page === 0}
-          >
-            Anterior
-          </button>
-          <div className="flex items-center gap-4">
-            <input
-              value={pageFront}
-              onChange={(e) => {
-                if (
-                  parseInt(e.currentTarget.value) >
-                  Math.ceil(1302 / MAX_ITEMS_ON_PAGE - 1)
-                ) {
-                  return setPageFront(Math.ceil(1302 / MAX_ITEMS_ON_PAGE));
-                }
-                if (parseInt(e.currentTarget.value) <= 0) {
-                  return setPageFront(1);
-                }
-                return setPageFront(parseInt(e.currentTarget.value));
-              }}
-              onKeyDown={handleKeyDown}
-              className={`p-4 text-center ${
-                pageFront - 1 !== page ? "bg-red-500" : "bg-red-300"
-              }`}
-              type="number"
-              min={1}
-              max={Math.ceil(1302 / MAX_ITEMS_ON_PAGE)}
-            />
-            <span className="hidden sm:block">
-              de {Math.ceil(1302 / MAX_ITEMS_ON_PAGE)}
-            </span>
-          </div>
-          <button
-            className="p-4 rounded-md bg-cyan-300 text-zinc-500"
-            onClick={() => handlePage(page + 1)}
-            disabled={page === Math.ceil(1302 / MAX_ITEMS_ON_PAGE - 1)}
-          >
-            Proximo
-          </button>
-        </div> */}
     </main>
   );
 }
