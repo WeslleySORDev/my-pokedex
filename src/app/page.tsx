@@ -69,8 +69,8 @@ export default function Home() {
   }
 
   return (
-    <main className="flex flex-col gap-4 items-center justify-between bg-identity-primary max-w-[360px] mx-auto p-1 relative">
-      <div className="flex flex-col gap-2 px-3 pt-3 pb-6 w-full sticky top-0 z-20 bg-identity-primary">
+    <main className="flex flex-col gap-4 items-center justify-between max-w-[640px] mx-auto p-1 bg-identity-primary">
+      <div className="flex flex-col gap-2 px-3 pt-3 pb-6 w-full">
         <div className="flex gap-4 items-center">
           <div className="relative w-[24px] h-[24px]">
             <svg
@@ -132,7 +132,7 @@ export default function Home() {
           </button>
         </div>
       </div>
-      <div className="flex justify-center gap-2 flex-wrap px-3 py-6 bg-grayscale-white rounded-lg shadow-inner2dp">
+      <div className="flex justify-center gap-2 flex-wrap px-3 py-6 bg-grayscale-white rounded-lg shadow-inner2dp max-h-[calc(100vh-128px)] overflow-auto">
         {!isLoading
           ? data.map((pokemon: IPokemon) => {
               return (
