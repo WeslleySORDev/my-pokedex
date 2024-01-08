@@ -106,7 +106,7 @@ export default function Pokemon({ params }: { params: { name: string } }) {
             #{formattedID}
           </span>
         </div>
-        <div className="max-h-[640px] min-h-[640px] mt-auto w-full bg-grayscale-white relative flex flex-col gap-4 rounded-lg shadow-inner2dp pt-14 px-2 sm:px-5 pb-5">
+        <div className="max-h-[576px] min-h-[576px] mt-auto w-full bg-grayscale-white relative flex flex-col gap-4 rounded-lg shadow-inner2dp pt-14 px-2 sm:px-5 pb-5">
           <PokemonImage
             url={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${formattedID}.png`}
             alt={`Imagem do pokemon ${data.name}`}
