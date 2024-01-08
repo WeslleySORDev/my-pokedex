@@ -38,7 +38,7 @@ const config: Config = {
           light: "#E0E0E0",
           background: "#EFEFEF",
           white: "#FFFFFF",
-          wireframe: "#B8B8B8"
+          wireframe: "#B8B8B8",
         },
       },
       boxShadow: {
@@ -46,6 +46,14 @@ const config: Config = {
         drop6dp: "0px 3px 12px 3px rgba(0, 0, 0, 0.20)",
         inner2dp: "0px 1px 3px 1px rgba(0, 0, 0, 0.25) inset",
       },
+      keyframes: {
+        widthKeyFrame: {
+          "0%": { width: "0" },
+        },
+      },
+      animation: {
+        widthAnimation: 'widthKeyFrame 1s',
+      }
     },
   },
   plugins: [],
