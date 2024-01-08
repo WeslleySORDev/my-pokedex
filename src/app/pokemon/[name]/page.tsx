@@ -122,11 +122,11 @@ export default function Pokemon({ params }: { params: { name: string } }) {
             About
           </span>
           <div className="flex w-full h-16">
-            <PokemonWeight />
+            <PokemonWeight weight={data.weight}/>
             <div className="w-[1px] h-full bg-grayscale-light"></div>
-            <PokemonHeight />
+            <PokemonHeight height={data.height}/>
             <div className="w-[1px] h-full bg-grayscale-light"></div>
-            <PokemonMoves />
+            <PokemonMoves abilities={data.abilities}/>
           </div>
           <span className="w-full line-clamp-6 text-grayscale-dark body-3">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc

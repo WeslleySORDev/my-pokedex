@@ -1,4 +1,8 @@
-export function PokemonWeight() {
+type PokemonWeightType ={
+  weight?: number;
+}
+
+export function PokemonWeight({weight}: PokemonWeightType) {
   return (
     <div className="flex flex-col flex-1">
       <div className="flex fill-grayscale-dark text-grayscale-dark gap-2 justify-center my-auto">
@@ -13,7 +17,7 @@ export function PokemonWeight() {
             fill="#1D1D1D"
           />
         </svg>
-        <span className="body-3">9,9 kg</span>
+        <span className="body-3">{weight ? weight : '9,9'} kg</span>
       </div>
       <span className="text-center mt-auto caption text-grayscale-medium">
         Weight
