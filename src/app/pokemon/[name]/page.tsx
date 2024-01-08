@@ -172,7 +172,7 @@ export default function Pokemon({ params }: { params: { name: string } }) {
               {data.stats.map((stat, index) => {
                 return (
                   <span
-                    key={stat.base_stat + index}
+                    key={stat.base_stat + Math.floor(Math.random() * (999 - 1 + 1) + 1)}
                     className="max-h-4 body-3 text-grayscale-dark"
                   >
                     {stat.base_stat.toString().length === 1

@@ -65,7 +65,6 @@ export default function Home() {
                 <PokemonCard
                   name={pokemon.name}
                   id={pokemon.id.toString()}
-                  currentPage={currentPage}
                   key={pokemon.name + pokemon.id}
                 />
               );

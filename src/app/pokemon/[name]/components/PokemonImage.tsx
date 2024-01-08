@@ -44,7 +44,13 @@ export function PokemonImage({
         </div>
       ) : (
         <div className="w-[200px] h-[200px] absolute -top-36 left-1/2 -translate-x-1/2 z-10">
-          <Image loading="eager" src={url} width={200} height={200} alt={alt} />
+          <Image
+            loading="eager"
+            src={url as string}
+            width={200}
+            height={200}
+            alt={alt as string}
+          />
         </div>
       )}
     </>
