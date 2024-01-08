@@ -65,43 +65,55 @@ export default function Pokemon({ params }: { params: { name: string } }) {
           </div>
           <div className="w-[1px] min-h-full bg-grayscale-light"></div>
           <div className="flex flex-col">
-            <span className="max-h-4 subtitle-3 text-grayscale-wireframe text-end">
+            <span className="max-h-4 body-3 text-grayscale-dark">
               999
             </span>
-            <span className="max-h-4 subtitle-3 text-grayscale-wireframe text-end">
+            <span className="max-h-4 body-3 text-grayscale-dark">
               999
             </span>
-            <span className="max-h-4 subtitle-3 text-grayscale-wireframe text-end">
+            <span className="max-h-4 body-3 text-grayscale-dark">
               999
             </span>
-            <span className="max-h-4 subtitle-3 text-grayscale-wireframe text-end">
+            <span className="max-h-4 body-3 text-grayscale-dark">
               999
             </span>
-            <span className="max-h-4 subtitle-3 text-grayscale-wireframe text-end">
+            <span className="max-h-4 body-3 text-grayscale-dark">
               999
             </span>
-            <span className="max-h-4 subtitle-3 text-grayscale-wireframe text-end">
+            <span className="max-h-4 body-3 text-grayscale-dark">
               999
             </span>
           </div>
           <div className="flex flex-col w-full">
             <div className="flex w-full max-h-4 items-center flex-1">
-              <div className="h-1 w-full rounded bg-grayscale-wireframe opacity-[0.2]"></div>
+              <div className="h-1 w-full rounded bg-grayscale-wireframe opacity-[0.2] relative">
+                <div className="h-full bg-grayscale-medium rounded-l w-1/2 top-0 left-0"></div>
+              </div>
             </div>
             <div className="flex w-full max-h-4 items-center flex-1">
-              <div className="h-1 w-full rounded bg-grayscale-wireframe opacity-[0.2]"></div>
+              <div className="h-1 w-full rounded bg-grayscale-wireframe opacity-[0.2]">
+                <div className="h-full bg-grayscale-medium rounded-l w-1/2 top-0 left-0"></div>
+              </div>
             </div>
             <div className="flex w-full max-h-4 items-center flex-1">
-              <div className="h-1 w-full rounded bg-grayscale-wireframe opacity-[0.2]"></div>
+              <div className="h-1 w-full rounded bg-grayscale-wireframe opacity-[0.2]">
+                <div className="h-full bg-grayscale-medium rounded-l w-1/2 top-0 left-0"></div>
+              </div>
             </div>
             <div className="flex w-full max-h-4 items-center flex-1">
-              <div className="h-1 w-full rounded bg-grayscale-wireframe opacity-[0.2]"></div>
+              <div className="h-1 w-full rounded bg-grayscale-wireframe opacity-[0.2]">
+                <div className="h-full bg-grayscale-medium rounded-l w-1/2 top-0 left-0"></div>
+              </div>
             </div>
             <div className="flex w-full max-h-4 items-center flex-1">
-              <div className="h-1 w-full rounded bg-grayscale-wireframe opacity-[0.2]"></div>
+              <div className="h-1 w-full rounded bg-grayscale-wireframe opacity-[0.2]">
+                <div className="h-full bg-grayscale-medium rounded-l w-1/2 top-0 left-0"></div>
+              </div>
             </div>
             <div className="flex w-full max-h-4 items-center flex-1">
-              <div className="h-1 w-full rounded bg-grayscale-wireframe opacity-[0.2]"></div>
+              <div className="h-1 w-full rounded bg-grayscale-wireframe opacity-[0.2]">
+                <div className="h-full bg-grayscale-medium rounded-l w-1/2 top-0 left-0"></div>
+              </div>
             </div>
           </div>
         </div>
