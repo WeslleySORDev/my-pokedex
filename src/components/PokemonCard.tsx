@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 type PokemonCardProps = {
   name: string;
@@ -13,7 +14,10 @@ export function PokemonCard(props: PokemonCardProps) {
       ? "0" + props.id
       : props.id;
   return (
-    <div className="bg-grayscale-white rounded-lg shadow-drop2dp w-[104px] h-[108px] relative flex flex-col">
+    <Link
+      href={`/pokemon/${props.name}`}
+      className="bg-grayscale-white rounded-lg shadow-drop2dp w-[104px] h-[108px] relative flex flex-col"
+    >
       <span className="px-2 pt-1 text-grayscale-medium caption text-end">
         #{formattedID}
       </span>
@@ -31,6 +35,6 @@ export function PokemonCard(props: PokemonCardProps) {
           {props.name[0].toUpperCase() + props.name.slice(1)}
         </span>
       </div>
-    </div>
+    </Link>
   );
 }
