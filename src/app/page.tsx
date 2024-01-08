@@ -8,16 +8,20 @@ import { PokemonLogo } from "@/components/PokemonLogo";
 import { SkeletonCard } from "@/components/SkeletonCard";
 import { instance } from "@/services/axios";
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [currentPage, setCurrentPage] = useState(() => {
-    const sessionStorageCurrentPage = sessionStorage.getItem(
-      "my-pokedex-current-page"
-    );
-    if (sessionStorageCurrentPage) return parseInt(sessionStorageCurrentPage);
-    return 1;
-  });
+  const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const sessionStorageCurrentPage = sessionStorage.getItem(
+        "my-pokedex-current-page"
+      );
+      if (sessionStorageCurrentPage)
+        setCurrentPage(parseInt(sessionStorageCurrentPage));
+    }
+  }, []);
   const MAX_ITEMS_ON_PAGE = 50;
 
   const handleCurrentPage = (value: number) => {
