@@ -14,7 +14,7 @@ export function PokemonImage({
   return (
     <>
       {isLoading ? (
-        <div className="absolute -top-36 left-1/2 -translate-x-1/2 z-10">
+        <div className="absolute -top-36 left-1/2 z-10 -translate-x-1/2">
           <svg
             width="200"
             height="200"
@@ -43,7 +43,7 @@ export function PokemonImage({
           </svg>
         </div>
       ) : (
-        <div className="w-[200px] h-[200px] absolute -top-36 left-1/2 -translate-x-1/2 z-10">
+        <div className="absolute -top-36 left-1/2 z-10 h-[200px] w-[200px] -translate-x-1/2">
           <Image
             loading="eager"
             src={url as string}

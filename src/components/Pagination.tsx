@@ -14,15 +14,26 @@ export function Pagination({
   const maxFirst = Math.max(Math.ceil(1302 / MAX_ITEMS_ON_PAGE) - MAX_ITEMS, 1);
   const first = Math.min(Math.max(currentPage - MAX_LEFT, 1), maxFirst);
   return (
-    <div className="flex items-center w-full px-0 mt-6">
+    <div className="mt-6 flex w-full items-center px-0">
       <button
-        className={`disabled:bg-transparent disabled:cursor-not-allowed bg-grayscale-background rounded-sm p-2 hidden sm:block`}
+        className={`hidden rounded-sm bg-grayscale-background p-2 disabled:cursor-not-allowed disabled:bg-transparent sm:block`}
         onClick={() => handleCurrentPage(currentPage - 1)}
         disabled={currentPage === 1}
       >
         Anterior
       </button>
-      <ul className="flex items-center justify-center gap-4 flex-1">
+      {currentPage > MAX_ITEMS && (
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => handleCurrentPage(1)}
+            className="text-grayscale-white"
+          >
+            1
+          </button>
+          <span>...</span>
+        </div>
+      )}
+      <ul className="flex flex-1 items-center justify-center gap-4">
         {Array.from({
           length: Math.min(MAX_ITEMS, Math.ceil(1302 / MAX_ITEMS_ON_PAGE)),
         })
@@ -41,11 +52,23 @@ export function Pagination({
                   {page}
                 </button>
               </li>
-            ) : null
+            ) : null,
           )}
       </ul>
+      {currentPage > Math.ceil(1302 / MAX_ITEMS_ON_PAGE) - MAX_ITEMS && (
+        <div className="flex items-center gap-2">
+          <span>...</span>
+
+          <button
+            onClick={() => handleCurrentPage(27)}
+            className="text-grayscale-white"
+          >
+            27
+          </button>
+        </div>
+      )}
       <button
-        className={`disabled:bg-transparent disabled:cursor-not-allowed bg-grayscale-background rounded-sm p-2 hidden sm:block`}
+        className={`hidden rounded-sm bg-grayscale-background p-2 disabled:cursor-not-allowed disabled:bg-transparent sm:block`}
         onClick={() => handleCurrentPage(currentPage + 1)}
         disabled={currentPage === Math.ceil(1302 / MAX_ITEMS_ON_PAGE)}
       >

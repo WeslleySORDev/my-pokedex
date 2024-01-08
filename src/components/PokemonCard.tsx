@@ -12,24 +12,24 @@ export function PokemonCard(props: PokemonCardProps) {
     props.id.length === 1
       ? "00" + props.id
       : props.id.length === 2
-      ? "0" + props.id
-      : props.id;
+        ? "0" + props.id
+        : props.id;
   const setSessionCurrentPage = () => {
     sessionStorage.setItem(
       "my-pokedex-current-page",
-      props.currentPage?.toString() as string
+      props.currentPage?.toString() as string,
     );
   };
   return (
     <Link
       href={`/pokemon/${props.name}`}
-      className="bg-grayscale-white rounded-lg shadow-drop2dp w-[104px] h-[108px] relative flex flex-col"
+      className="relative flex h-[108px] w-[104px] flex-col rounded-lg bg-grayscale-white shadow-drop2dp"
       onClick={setSessionCurrentPage}
     >
-      <span className="px-2 pt-1 text-grayscale-medium caption text-end">
+      <span className="caption px-2 pt-1 text-end text-grayscale-medium">
         #{formattedID}
       </span>
-      <div className="relative w-[72px] h-[72px] mx-auto z-10">
+      <div className="relative z-10 mx-auto h-[72px] w-[72px]">
         <Image
           loading="eager"
           src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${formattedID}.png`}
@@ -38,8 +38,8 @@ export function PokemonCard(props: PokemonCardProps) {
           alt={props.name}
         />
       </div>
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[44px] w-full bg-grayscale-background flex justify-center items-end rounded-lg">
-        <span className="text-grayscale-dark body-3 max-w-[88px] truncate">
+      <div className="absolute bottom-0 left-1/2 flex h-[44px] w-full -translate-x-1/2 items-end justify-center rounded-lg bg-grayscale-background">
+        <span className="body-3 max-w-[88px] truncate text-grayscale-dark">
           {props.name[0].toUpperCase() + props.name.slice(1)}
         </span>
       </div>

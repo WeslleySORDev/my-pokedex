@@ -1,7 +1,7 @@
 export function PokemonLogo() {
   return (
-    <div className="flex gap-4 items-center">
-      <div className="relative w-[24px] h-[24px]">
+    <div className="flex items-center gap-4">
+      <div className="relative h-[24px] w-[24px]">
         <svg
           width="24"
           height="24"

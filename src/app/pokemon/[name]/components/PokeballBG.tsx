@@ -1,6 +1,6 @@
 export function PokeballBG() {
   return (
-    <div className="absolute top-1 right-1">
+    <div className="absolute right-1 top-1">
       <svg
         width="208"
         height="208"

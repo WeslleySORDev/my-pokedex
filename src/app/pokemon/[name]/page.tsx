@@ -81,8 +81,8 @@ export default function Pokemon({ params }: { params: { name: string } }) {
       data.id.toString().length === 1
         ? "00" + data.id.toString()
         : data.id.toString().length === 2
-        ? "0" + data.id.toString()
-        : data.id.toString();
+          ? "0" + data.id.toString()
+          : data.id.toString();
     const getProgressBar = (value: number) => {
       const biggestStats = Math.max(...data.stats.map((o) => o.base_stat));
       const progressBar =
@@ -93,32 +93,32 @@ export default function Pokemon({ params }: { params: { name: string } }) {
     };
     return (
       <main
-        className={`flex flex-col max-w-[640px] mx-auto min-h-screen max-h-screen relative p-1 ${
+        className={`relative mx-auto flex max-h-screen min-h-screen max-w-[640px] flex-col p-1 ${
           pokemonBgVariants[data.types[0].type.name]
         }`}
       >
-        <div className="flex px-5 pt-5 pb-6 gap-2">
+        <div className="flex gap-2 px-5 pb-6 pt-5">
           <ArrowBack />
-          <h1 className="headline text-grayscale-white flex-1 truncate">
+          <h1 className="headline flex-1 truncate text-grayscale-white">
             {data.name[0].toUpperCase() + data.name.slice(1)}
           </h1>
           <span className="subtitle-2 text-grayscale-white">
             #{formattedID}
           </span>
         </div>
-        <div className="max-h-[576px] min-h-[576px] mt-auto w-full bg-grayscale-white relative flex flex-col gap-4 rounded-lg shadow-inner2dp pt-14 px-2 sm:px-5 pb-5">
+        <div className="relative mt-auto flex max-h-[576px] min-h-[576px] w-full flex-col gap-4 rounded-lg bg-grayscale-white px-2 pb-5 pt-14 shadow-inner2dp sm:px-5">
           <PokemonImage
             url={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${formattedID}.png`}
             alt={`Imagem do pokemon ${data.name}`}
           />
-          <div className="flex gap-4 items-center w-full justify-center">
+          <div className="flex w-full items-center justify-center gap-4">
             {data.types
               ? data.types.map((type) => {
                   return (
                     <PokemonType
                       key={type.type.name + type.slot}
                       type={type.type.name}
-                      className={`px-2 py-[2px] rounded-[10px] text-grayscale-white subtitle-3 ${
+                      className={`subtitle-3 rounded-[10px] px-2 py-[2px] text-grayscale-white ${
                         pokemonBgVariants[type.type.name]
                       }`}
                     />
@@ -126,72 +126,75 @@ export default function Pokemon({ params }: { params: { name: string } }) {
                 })
               : null}
           </div>
-          <span className="text-grayscale-wireframe subtitle-1 text-center">
+          <span className="subtitle-1 text-center text-grayscale-wireframe">
             About
           </span>
-          <div className="flex w-full h-16">
+          <div className="flex h-16 w-full">
             <PokemonWeight weight={data.weight} />
-            <div className="w-[1px] h-full bg-grayscale-light"></div>
+            <div className="h-full w-[1px] bg-grayscale-light"></div>
             <PokemonHeight height={data.height} />
-            <div className="w-[1px] h-full bg-grayscale-light"></div>
+            <div className="h-full w-[1px] bg-grayscale-light"></div>
             <PokemonMoves abilities={data.abilities} />
           </div>
-          <span className="w-full line-clamp-6 text-grayscale-dark body-3">
+          <span className="body-3 line-clamp-6 w-full text-grayscale-dark">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
             iaculis eros vitae tellus condimentum maximus sit amet in eros. cing
             elit. Nunc iaculis eros vitae tellus condimentum maximus sit amet in
             eros.. cing elit. Nunc iaculis eros vitae tellus condimentum maximus
             sit amet in eros.
           </span>
-          <span className="text-grayscale-wireframe subtitle-1 text-center">
+          <span className="subtitle-1 text-center text-grayscale-wireframe">
             Base Stats
           </span>
-          <div className="flex gap-4 w-full">
+          <div className="flex w-full gap-4">
             <div className="flex flex-col">
-              <span className="max-h-4 subtitle-3 text-grayscale-wireframe text-end">
+              <span className="subtitle-3 max-h-4 text-end text-grayscale-wireframe">
                 HP
               </span>
-              <span className="max-h-4 subtitle-3 text-grayscale-wireframe text-end">
+              <span className="subtitle-3 max-h-4 text-end text-grayscale-wireframe">
                 ATK
               </span>
-              <span className="max-h-4 subtitle-3 text-grayscale-wireframe text-end">
+              <span className="subtitle-3 max-h-4 text-end text-grayscale-wireframe">
                 DEF
               </span>
-              <span className="max-h-4 subtitle-3 text-grayscale-wireframe text-end">
+              <span className="subtitle-3 max-h-4 text-end text-grayscale-wireframe">
                 SATK
               </span>
-              <span className="max-h-4 subtitle-3 text-grayscale-wireframe text-end">
+              <span className="subtitle-3 max-h-4 text-end text-grayscale-wireframe">
                 SDEF
               </span>
-              <span className="max-h-4 subtitle-3 text-grayscale-wireframe text-end">
+              <span className="subtitle-3 max-h-4 text-end text-grayscale-wireframe">
                 SPD
               </span>
             </div>
-            <div className="w-[1px] min-h-full bg-grayscale-light"></div>
+            <div className="min-h-full w-[1px] bg-grayscale-light"></div>
             <div className="flex flex-col">
               {data.stats.map((stat, index) => {
                 return (
                   <span
-                    key={stat.base_stat + Math.floor(Math.random() * (999 - 1 + 1) + 1)}
-                    className="max-h-4 body-3 text-grayscale-dark"
+                    key={
+                      stat.base_stat +
+                      Math.floor(Math.random() * (999 - 1 + 1) + 1)
+                    }
+                    className="body-3 max-h-4 text-grayscale-dark"
                   >
                     {stat.base_stat.toString().length === 1
                       ? "00" + stat.base_stat.toString()
                       : stat.base_stat.toString().length === 2
-                      ? "0" + stat.base_stat.toString()
-                      : stat.base_stat.toString()}
+                        ? "0" + stat.base_stat.toString()
+                        : stat.base_stat.toString()}
                   </span>
                 );
               })}
             </div>
-            <div className="flex flex-col w-full">
+            <div className="flex w-full flex-col">
               {Array.from({
                 length: 6,
               }).map((_, index) => {
                 return (
                   <div
                     key={`Progress Bar Stats key ` + index}
-                    className="flex w-full max-h-4 items-center flex-1 relative"
+                    className="relative flex max-h-4 w-full flex-1 items-center"
                   >
                     <div
                       className={`h-1 w-full rounded opacity-[0.2] ${
@@ -199,7 +202,7 @@ export default function Pokemon({ params }: { params: { name: string } }) {
                       }`}
                     ></div>
                     <div
-                      className={`transition-all duration-75 animate-widthAnimation w-0 h-1 rounded-l top-1/2 -translate-y-1/2 bg-opacity-100 left-0 absolute ${
+                      className={`absolute left-0 top-1/2 h-1 w-0 -translate-y-1/2 animate-widthAnimation rounded-l bg-opacity-100 transition-all duration-75 ${
                         pokemonBgVariants[data.types[0].type.name]
                       }`}
                       style={{

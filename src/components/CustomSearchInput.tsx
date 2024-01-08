@@ -1,7 +1,7 @@
 export function CustomSearchInput() {
   return (
-    <div className="rounded-2xl bg-grayscale-white shadow-inner2dp flex-1 pl-3 pr-4 py-2 flex items-center gap-2">
-      <div className="relative w-[16px] h-[16px]">
+    <div className="flex flex-1 items-center gap-2 rounded-2xl bg-grayscale-white py-2 pl-3 pr-4 shadow-inner2dp">
+      <div className="relative h-[16px] w-[16px]">
         <svg
           width="16"
           height="16"
@@ -17,7 +17,7 @@ export function CustomSearchInput() {
       </div>
       <input
         placeholder="Search"
-        className="bg-transparent flex-1 text-grayscale-medium body-3 px-1"
+        className="body-3 flex-1 bg-transparent px-1 text-grayscale-medium"
         type="text"
       />
     </div>

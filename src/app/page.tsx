@@ -16,7 +16,7 @@ export default function Home() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const sessionStorageCurrentPage = sessionStorage.getItem(
-        "my-pokedex-current-page"
+        "my-pokedex-current-page",
       );
       if (sessionStorageCurrentPage)
         setCurrentPage(parseInt(sessionStorageCurrentPage));
@@ -33,7 +33,7 @@ export default function Home() {
       .get(
         `pokemon/?limit=${MAX_ITEMS_ON_PAGE}&offset=${
           (page - 1) * MAX_ITEMS_ON_PAGE
-        }`
+        }`,
       )
       .then((res) => res.data.results);
     const allPokemonData: any = await Promise.all(
@@ -42,7 +42,7 @@ export default function Home() {
           .get<IPokemon>("pokemon/" + pokemonName.name)
           .then((res) => res.data);
         return pokemonData;
-      })
+      }),
     );
     return allPokemonData;
   };
@@ -56,9 +56,9 @@ export default function Home() {
   }
 
   return (
-    <main className="flex flex-col gap-4 items-center justify-between max-w-[640px] mx-auto p-1 bg-identity-primary">
-      <div className="flex flex-col gap-2 px-3 pt-3 w-full">
-        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-16 w-full">
+    <main className="mx-auto flex max-w-[640px] flex-col items-center justify-between gap-4 bg-identity-primary p-1">
+      <div className="flex w-full flex-col gap-2 px-3 pt-3">
+        <div className="flex w-full flex-col gap-2 sm:flex-row sm:items-center sm:gap-16">
           <PokemonLogo />
           <CustomSearchInput />
         </div>
@@ -68,7 +68,7 @@ export default function Home() {
           currentPage={currentPage}
         />
       </div>
-      <div className="flex justify-center gap-2 flex-wrap w-full px-3 py-6 bg-grayscale-white rounded-lg shadow-inner2dp max-h-[calc(100lvh-164px)] min-h-[calc(100lvh-164px)] sm:max-h-[calc(100lvh-140px)] sm:min-h-[calc(100lvh-140px)] overflow-auto">
+      <div className="flex max-h-[calc(100lvh-164px)] min-h-[calc(100lvh-164px)] w-full flex-wrap justify-center gap-2 overflow-auto rounded-lg bg-grayscale-white px-3 py-6 shadow-inner2dp sm:max-h-[calc(100lvh-140px)] sm:min-h-[calc(100lvh-140px)]">
         {!isLoading
           ? data.map((pokemon: IPokemon) => {
               return (

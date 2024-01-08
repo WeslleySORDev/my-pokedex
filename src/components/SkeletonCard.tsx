@@ -1,8 +1,8 @@
 export function SkeletonCard() {
   return (
-    <div className="bg-grayscale-white rounded-lg shadow-drop2dp w-[104px] h-[108px] relative flex flex-col">
-      <div className="w-[22px] ml-auto mr-2 mt-1 animate-pulse bg-[rgba(0,_0,_0,_0.6)] h-3 rounded"></div>
-      <div className="relative w-[72px] h-[72px] mx-auto z-10 animate-pulse">
+    <div className="relative flex h-[108px] w-[104px] flex-col rounded-lg bg-grayscale-white shadow-drop2dp">
+      <div className="ml-auto mr-2 mt-1 h-3 w-[22px] animate-pulse rounded bg-[rgba(0,_0,_0,_0.6)]"></div>
+      <div className="relative z-10 mx-auto h-[72px] w-[72px] animate-pulse">
         <svg
           width="72"
           height="72"
@@ -30,8 +30,8 @@ export function SkeletonCard() {
           </defs>
         </svg>
       </div>
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[44px] w-full bg-grayscale-background flex justify-center items-end rounded-lg">
-        <div className="w-full mx-2 mb-1 animate-pulse bg-[rgba(0,_0,_0,_0.6)] h-3 rounded"></div>
+      <div className="absolute bottom-0 left-1/2 flex h-[44px] w-full -translate-x-1/2 items-end justify-center rounded-lg bg-grayscale-background">
+        <div className="mx-2 mb-1 h-3 w-full animate-pulse rounded bg-[rgba(0,_0,_0,_0.6)]"></div>
       </div>
     </div>
   );

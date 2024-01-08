@@ -1,11 +1,11 @@
-type PokemonHeightType ={
+type PokemonHeightType = {
   height?: number;
-}
+};
 
-export function PokemonHeight({height}: PokemonHeightType) {
+export function PokemonHeight({ height }: PokemonHeightType) {
   return (
-    <div className="flex flex-col flex-1">
-      <div className="flex fill-grayscale-dark text-grayscale-dark gap-2 justify-center my-auto">
+    <div className="flex flex-1 flex-col">
+      <div className="my-auto flex justify-center gap-2 fill-grayscale-dark text-grayscale-dark">
         <svg
           width="16"
           height="16"
@@ -18,9 +18,9 @@ export function PokemonHeight({height}: PokemonHeightType) {
           />
         </svg>
 
-        <span className="body-3">{height ? height : '9,9'} m</span>
+        <span className="body-3">{height ? height : "9,9"} m</span>
       </div>
-      <span className="text-center mt-auto caption text-grayscale-medium">
+      <span className="caption mt-auto text-center text-grayscale-medium">
         Height
       </span>
     </div>

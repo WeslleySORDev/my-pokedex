@@ -11,28 +11,28 @@ type PokemonMovesType = {
 
 export function PokemonMoves({ abilities }: PokemonMovesType) {
   return (
-    <div className="flex flex-col flex-1">
-      <div className="flex flex-col text-grayscale-dark gap-1 justify-center items-center my-auto">
+    <div className="flex flex-1 flex-col">
+      <div className="my-auto flex flex-col items-center justify-center gap-1 text-grayscale-dark">
         {abilities ? (
           abilities.map((ability, index) =>
             index < 2 ? (
               <span
                 key={ability.ability.name + ability.slot}
-                className="text-grayscale-dark body-3 truncate"
+                className="body-3 truncate text-grayscale-dark"
               >
                 {ability.ability.name[0].toUpperCase() +
                   ability.ability.name.slice(1)}
               </span>
-            ) : null
+            ) : null,
           )
         ) : (
           <>
-            <span className="text-grayscale-dark body-3">Ability 1</span>
-            <span className="text-grayscale-dark body-3">Ability 1</span>
+            <span className="body-3 text-grayscale-dark">Ability 1</span>
+            <span className="body-3 text-grayscale-dark">Ability 1</span>
           </>
         )}
       </div>
-      <span className="text-center mt-auto caption text-grayscale-medium">
+      <span className="caption mt-auto text-center text-grayscale-medium">
         Moves
       </span>
     </div>
