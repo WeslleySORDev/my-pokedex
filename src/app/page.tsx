@@ -46,7 +46,7 @@ export default function Home() {
   return (
     <main className="flex flex-col gap-4 items-center justify-between max-w-[640px] mx-auto p-1 bg-identity-primary">
       <div className="flex flex-col gap-2 px-3 pt-3 w-full">
-        <div className="flex items-center gap-16 w-full">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-16 w-full">
           <PokemonLogo />
           <CustomSearchInput />
         </div>
@@ -56,7 +56,7 @@ export default function Home() {
           currentPage={currentPage}
         />
       </div>
-      <div className="flex justify-center gap-2 flex-wrap w-full px-3 py-6 bg-grayscale-white rounded-lg shadow-inner2dp max-h-[calc(100lvh-140px)] min-h-[calc(100lvh-140px)] overflow-auto">
+      <div className="flex justify-center gap-2 flex-wrap w-full px-3 py-6 bg-grayscale-white rounded-lg shadow-inner2dp max-h-[calc(100lvh-164px)] min-h-[calc(100lvh-164px)] sm:max-h-[calc(100lvh-140px)] sm:min-h-[calc(100lvh-140px)] overflow-auto">
         {!isLoading
           ? data.map((pokemon: IPokemon) => {
               return (
