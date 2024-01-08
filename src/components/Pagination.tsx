@@ -18,7 +18,7 @@ export function Pagination({
       <button
         className={`disabled:bg-transparent disabled:cursor-not-allowed bg-grayscale-background rounded-sm p-2 hidden sm:block`}
         onClick={() => handleCurrentPage(currentPage - 1)}
-        disabled={currentPage === 0}
+        disabled={currentPage === 1}
       >
         Anterior
       </button>

@@ -38,6 +38,7 @@ const config: Config = {
           light: "#E0E0E0",
           background: "#EFEFEF",
           white: "#FFFFFF",
+          wireframe: "#B8B8B8"
         },
       },
       boxShadow: {
