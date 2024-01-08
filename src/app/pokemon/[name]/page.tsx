@@ -32,6 +32,14 @@ export default function Pokemon({ params }: { params: { name: string } }) {
           <div className="w-[1px] h-full bg-grayscale-light"></div>
           <PokemonMoves />
         </div>
+        <span className="w-full line-clamp-5 text-grayscale-dark body-3">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc iaculis
+          eros vitae tellus condimentum maximus sit amet in eros.
+          cing elit. Nunc iaculis
+          eros vitae tellus condimentum maximus sit amet in eros..
+          cing elit. Nunc iaculis
+          eros vitae tellus condimentum maximus sit amet in eros.
+        </span>
       </div>
       <PokeballBG />
     </main>
