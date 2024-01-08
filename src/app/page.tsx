@@ -11,7 +11,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 
 export default function Home() {
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
   const MAX_ITEMS_ON_PAGE = 50;
 
   const handleCurrentPage = (value: number) => {
@@ -21,7 +21,7 @@ export default function Home() {
   const fetchPokemonData = async (page: number) => {
     const pokemonNames = await instance
       .get(
-        `pokemon/?limit=${MAX_ITEMS_ON_PAGE}&offset=${page * MAX_ITEMS_ON_PAGE}`
+        `pokemon/?limit=${MAX_ITEMS_ON_PAGE}&offset=${(page - 1) * MAX_ITEMS_ON_PAGE}`
       )
       .then((res) => res.data.results);
     const allPokemonData: any = await Promise.all(
@@ -45,7 +45,7 @@ export default function Home() {
 
   return (
     <main className="flex flex-col gap-4 items-center justify-between max-w-[640px] mx-auto p-1 bg-identity-primary">
-      <div className="flex flex-col gap-2 px-3 pt-3 pb-6 w-full">
+      <div className="flex flex-col gap-2 px-3 pt-3 w-full">
         <div className="flex items-center gap-16 w-full">
           <PokemonLogo />
           <CustomSearchInput />
@@ -56,7 +56,7 @@ export default function Home() {
           currentPage={currentPage}
         />
       </div>
-      <div className="flex justify-center gap-2 flex-wrap w-full px-3 py-6 bg-grayscale-white rounded-lg shadow-inner2dp min-h-[calc(100lvh-132px)] max-h-[calc(100lvh-132px)] sm:max-h-[calc(100lvh-150px)] sm:min-h-[calc(100lvh-150px)] overflow-auto">
+      <div className="flex justify-center gap-2 flex-wrap w-full px-3 py-6 bg-grayscale-white rounded-lg shadow-inner2dp max-h-[calc(100lvh-140px)] min-h-[calc(100lvh-140px)] overflow-auto">
         {!isLoading
           ? data.map((pokemon: IPokemon) => {
               return (
