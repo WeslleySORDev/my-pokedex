@@ -1,3 +1,5 @@
+import { useWindowSize } from "@/hooks/useWindowSize";
+
 interface IPagination {
   handleCurrentPage: (value: number) => void;
   currentPage: number;
@@ -9,15 +11,16 @@ export function Pagination({
   currentPage,
   MAX_ITEMS_ON_PAGE,
 }: IPagination) {
-  const MAX_ITEMS = 9;
+  const size = useWindowSize();
+  const MAX_ITEMS = size.width <= 375 ? 3 : size.width <= 768 ? 5 : 9;
   const MAX_LEFT = (MAX_ITEMS - 1) / 2;
   const maxFirst = Math.max(Math.ceil(1302 / MAX_ITEMS_ON_PAGE) - MAX_ITEMS, 1);
   const first = Math.min(Math.max(currentPage - MAX_LEFT, 1), maxFirst);
   return (
     <div className="mt-6 flex w-full items-center rounded bg-grayscale-white px-2 xs:px-4">
-      <div className="flex items-center gap-8">
+      <div className="flex items-center gap-4 xs:gap-6 sm:gap-8">
         <button
-          className={`hidden rounded-sm fill-[#000000] disabled:cursor-not-allowed xs:block`}
+          className={`rounded-sm fill-[#000000] disabled:cursor-not-allowed`}
           onClick={() => handleCurrentPage(currentPage - 1)}
           disabled={currentPage === 1}
         >
@@ -30,32 +33,34 @@ export function Pagination({
             <path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"></path>
           </svg>
         </button>
-        {currentPage > MAX_LEFT + 1 && (
-          <div className="ml-auto hidden items-center gap-2 sm:flex">
-            <button
-              onClick={() => handleCurrentPage(1)}
-              className="text-grayscale-dark"
-            >
-              1
-            </button>
-            <span className="text-grayscale-dark">...</span>
-          </div>
-        )}
+        <div
+          className={`ml-auto flex items-center gap-2 text-xs sm:text-sm ${
+            !(currentPage > MAX_LEFT + 1) && "invisible"
+          }`}
+        >
+          <button
+            onClick={() => handleCurrentPage(1)}
+            className="text-grayscale-dark"
+          >
+            1
+          </button>
+          <span className="text-grayscale-dark">...</span>
+        </div>
       </div>
-      <ul className="flex flex-1 items-center justify-center gap-4">
+      <ul className="flex flex-1 items-center justify-center">
         {Array.from({
           length: Math.min(MAX_ITEMS, Math.ceil(1302 / MAX_ITEMS_ON_PAGE)),
         })
           .map((_, index) => index + first)
           .map((page) =>
             page < Math.ceil(1302 / MAX_ITEMS_ON_PAGE) ? (
-              <li className="text-xs xs:text-base" key={page}>
+              <li className="text-xs sm:text-sm" key={page}>
                 <button
                   onClick={() => handleCurrentPage(page)}
                   className={
                     page === currentPage
-                      ? "bg-[#7b8795] px-2 py-1 xs:px-4 xs:py-2 text-grayscale-white"
-                      : "text-grayscale-dark"
+                      ? "bg-[#7b8795] px-4 py-2 text-grayscale-white"
+                      : "px-4 py-2 text-grayscale-dark"
                   }
                 >
                   {page}
@@ -64,8 +69,13 @@ export function Pagination({
             ) : null,
           )}
       </ul>
-      <div className="flex items-center gap-8">
-        <div className="ml-auto hidden items-center gap-2 sm:flex">
+      <div className="flex items-center gap-4 xs:gap-6 sm:gap-8">
+        <div
+          className={`ml-auto flex items-center gap-2 text-xs sm:text-sm ${
+            currentPage >= Math.ceil(1302 / MAX_ITEMS_ON_PAGE) - MAX_LEFT &&
+            "invisible"
+          }`}
+        >
           <span className="text-grayscale-dark">...</span>
           <button
             onClick={() => handleCurrentPage(27)}
@@ -75,7 +85,7 @@ export function Pagination({
           </button>
         </div>
         <button
-          className={`hidden rounded-sm fill-[#000000] disabled:cursor-not-allowed xs:block`}
+          className={`rounded-sm fill-[#000000] disabled:cursor-not-allowed`}
           onClick={() => handleCurrentPage(currentPage + 1)}
           disabled={currentPage === Math.ceil(1302 / MAX_ITEMS_ON_PAGE)}
         >
