@@ -14,24 +14,31 @@ export function Pagination({
   const maxFirst = Math.max(Math.ceil(1302 / MAX_ITEMS_ON_PAGE) - MAX_ITEMS, 1);
   const first = Math.min(Math.max(currentPage - MAX_LEFT, 1), maxFirst);
   return (
-    <div className="mt-6 flex w-full items-center px-0">
-      <div className="flex items-center gap-4">
+    <div className="mt-6 flex w-full items-center rounded bg-grayscale-white px-2 xs:px-4">
+      <div className="flex items-center gap-8">
         <button
-          className={`hidden rounded-sm bg-grayscale-background p-2 disabled:cursor-not-allowed disabled:bg-transparent sm:block`}
+          className={`hidden rounded-sm fill-[#000000] disabled:cursor-not-allowed xs:block`}
           onClick={() => handleCurrentPage(currentPage - 1)}
           disabled={currentPage === 1}
         >
-          Anterior
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 256 256"
+          >
+            <path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"></path>
+          </svg>
         </button>
         {currentPage > MAX_LEFT + 1 && (
-          <div className="flex items-center gap-2">
+          <div className="ml-auto hidden items-center gap-2 sm:flex">
             <button
               onClick={() => handleCurrentPage(1)}
-              className="text-grayscale-white"
+              className="text-grayscale-dark"
             >
               1
             </button>
-            <span className="text-grayscale-white">...</span>
+            <span className="text-grayscale-dark">...</span>
           </div>
         )}
       </div>
@@ -42,13 +49,13 @@ export function Pagination({
           .map((_, index) => index + first)
           .map((page) =>
             page < Math.ceil(1302 / MAX_ITEMS_ON_PAGE) ? (
-              <li key={page}>
+              <li className="text-xs xs:text-base" key={page}>
                 <button
                   onClick={() => handleCurrentPage(page)}
                   className={
                     page === currentPage
-                      ? "text-grayscale-dark underline underline-offset-4"
-                      : "text-grayscale-white"
+                      ? "bg-[#7b8795] px-2 py-1 xs:px-4 xs:py-2 text-grayscale-white"
+                      : "text-grayscale-dark"
                   }
                 >
                   {page}
@@ -57,24 +64,29 @@ export function Pagination({
             ) : null,
           )}
       </ul>
-      <div className="flex items-center gap-4">
-        {currentPage < Math.ceil(1302 / MAX_ITEMS_ON_PAGE) - MAX_LEFT && (
-          <div className="flex items-center gap-2">
-            <span className="text-grayscale-white">...</span>
-            <button
-              onClick={() => handleCurrentPage(27)}
-              className="text-grayscale-white"
-            >
-              27
-            </button>
-          </div>
-        )}
+      <div className="flex items-center gap-8">
+        <div className="ml-auto hidden items-center gap-2 sm:flex">
+          <span className="text-grayscale-dark">...</span>
+          <button
+            onClick={() => handleCurrentPage(27)}
+            className="text-grayscale-dark"
+          >
+            27
+          </button>
+        </div>
         <button
-          className={`hidden rounded-sm bg-grayscale-background p-2 disabled:cursor-not-allowed disabled:bg-transparent sm:block`}
+          className={`hidden rounded-sm fill-[#000000] disabled:cursor-not-allowed xs:block`}
           onClick={() => handleCurrentPage(currentPage + 1)}
           disabled={currentPage === Math.ceil(1302 / MAX_ITEMS_ON_PAGE)}
         >
-          Próxima
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 256 256"
+          >
+            <path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path>
+          </svg>
         </button>
       </div>
     </div>

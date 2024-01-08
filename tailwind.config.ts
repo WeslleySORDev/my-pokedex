@@ -53,6 +53,9 @@ const config: Config = {
       },
       animation: {
         widthAnimation: 'widthKeyFrame 1s',
+      },
+      screens: {
+        'xs': '425px'
       }
     },
   },
