@@ -21,7 +21,9 @@ export default function Home() {
   const fetchPokemonData = async (page: number) => {
     const pokemonNames = await instance
       .get(
-        `pokemon/?limit=${MAX_ITEMS_ON_PAGE}&offset=${(page - 1) * MAX_ITEMS_ON_PAGE}`
+        `pokemon/?limit=${MAX_ITEMS_ON_PAGE}&offset=${
+          (page - 1) * MAX_ITEMS_ON_PAGE
+        }`
       )
       .then((res) => res.data.results);
     const allPokemonData: any = await Promise.all(
@@ -63,6 +65,7 @@ export default function Home() {
                 <PokemonCard
                   name={pokemon.name}
                   id={pokemon.id.toString()}
+                  currentPage={currentPage}
                   key={pokemon.name + pokemon.id}
                 />
               );
