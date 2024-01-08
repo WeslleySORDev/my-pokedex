@@ -34,12 +34,77 @@ export default function Pokemon({ params }: { params: { name: string } }) {
         </div>
         <span className="w-full line-clamp-5 text-grayscale-dark body-3">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc iaculis
-          eros vitae tellus condimentum maximus sit amet in eros.
-          cing elit. Nunc iaculis
-          eros vitae tellus condimentum maximus sit amet in eros..
-          cing elit. Nunc iaculis
-          eros vitae tellus condimentum maximus sit amet in eros.
+          eros vitae tellus condimentum maximus sit amet in eros. cing elit.
+          Nunc iaculis eros vitae tellus condimentum maximus sit amet in eros..
+          cing elit. Nunc iaculis eros vitae tellus condimentum maximus sit amet
+          in eros.
         </span>
+        <span className="text-grayscale-wireframe subtitle-1 text-center">
+          Base Stats
+        </span>
+        <div className="flex gap-4 w-full">
+          <div className="flex flex-col">
+            <span className="max-h-4 subtitle-3 text-grayscale-wireframe text-end">
+              HP
+            </span>
+            <span className="max-h-4 subtitle-3 text-grayscale-wireframe text-end">
+              ATK
+            </span>
+            <span className="max-h-4 subtitle-3 text-grayscale-wireframe text-end">
+              DEF
+            </span>
+            <span className="max-h-4 subtitle-3 text-grayscale-wireframe text-end">
+              SATK
+            </span>
+            <span className="max-h-4 subtitle-3 text-grayscale-wireframe text-end">
+              SDEF
+            </span>
+            <span className="max-h-4 subtitle-3 text-grayscale-wireframe text-end">
+              SPD
+            </span>
+          </div>
+          <div className="w-[1px] min-h-full bg-grayscale-light"></div>
+          <div className="flex flex-col">
+            <span className="max-h-4 subtitle-3 text-grayscale-wireframe text-end">
+              999
+            </span>
+            <span className="max-h-4 subtitle-3 text-grayscale-wireframe text-end">
+              999
+            </span>
+            <span className="max-h-4 subtitle-3 text-grayscale-wireframe text-end">
+              999
+            </span>
+            <span className="max-h-4 subtitle-3 text-grayscale-wireframe text-end">
+              999
+            </span>
+            <span className="max-h-4 subtitle-3 text-grayscale-wireframe text-end">
+              999
+            </span>
+            <span className="max-h-4 subtitle-3 text-grayscale-wireframe text-end">
+              999
+            </span>
+          </div>
+          <div className="flex flex-col w-full">
+            <div className="flex w-full max-h-4 items-center flex-1">
+              <div className="h-1 w-full rounded bg-grayscale-wireframe opacity-[0.2]"></div>
+            </div>
+            <div className="flex w-full max-h-4 items-center flex-1">
+              <div className="h-1 w-full rounded bg-grayscale-wireframe opacity-[0.2]"></div>
+            </div>
+            <div className="flex w-full max-h-4 items-center flex-1">
+              <div className="h-1 w-full rounded bg-grayscale-wireframe opacity-[0.2]"></div>
+            </div>
+            <div className="flex w-full max-h-4 items-center flex-1">
+              <div className="h-1 w-full rounded bg-grayscale-wireframe opacity-[0.2]"></div>
+            </div>
+            <div className="flex w-full max-h-4 items-center flex-1">
+              <div className="h-1 w-full rounded bg-grayscale-wireframe opacity-[0.2]"></div>
+            </div>
+            <div className="flex w-full max-h-4 items-center flex-1">
+              <div className="h-1 w-full rounded bg-grayscale-wireframe opacity-[0.2]"></div>
+            </div>
+          </div>
+        </div>
       </div>
       <PokeballBG />
     </main>
