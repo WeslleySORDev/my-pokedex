@@ -11,7 +11,13 @@ import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 
 export default function Home() {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(() => {
+    const sessionStorageCurrentPage = sessionStorage.getItem(
+      "my-pokedex-current-page"
+    );
+    if (sessionStorageCurrentPage) return parseInt(sessionStorageCurrentPage);
+    return 1;
+  });
   const MAX_ITEMS_ON_PAGE = 50;
 
   const handleCurrentPage = (value: number) => {
@@ -66,6 +72,7 @@ export default function Home() {
                   name={pokemon.name}
                   id={pokemon.id.toString()}
                   key={pokemon.name + pokemon.id}
+                  currentPage={currentPage}
                 />
               );
             })

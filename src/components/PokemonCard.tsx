@@ -4,6 +4,7 @@ import Link from "next/link";
 type PokemonCardProps = {
   name: string;
   id: string;
+  currentPage?: number;
 };
 
 export function PokemonCard(props: PokemonCardProps) {
@@ -13,10 +14,17 @@ export function PokemonCard(props: PokemonCardProps) {
       : props.id.length === 2
       ? "0" + props.id
       : props.id;
+  const setSessionCurrentPage = () => {
+    sessionStorage.setItem(
+      "my-pokedex-current-page",
+      props.currentPage?.toString() as string
+    );
+  };
   return (
     <Link
       href={`/pokemon/${props.name}`}
       className="bg-grayscale-white rounded-lg shadow-drop2dp w-[104px] h-[108px] relative flex flex-col"
+      onClick={setSessionCurrentPage}
     >
       <span className="px-2 pt-1 text-grayscale-medium caption text-end">
         #{formattedID}
