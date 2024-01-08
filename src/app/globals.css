@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-grayscale-background
+  @apply bg-grayscale-background scroll-smooth
 }
 
 @layer base {
