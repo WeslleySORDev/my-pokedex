@@ -1,6 +1,7 @@
 import { ArrowBack } from "./components/ArrowBack";
 import { PokemonHeight } from "./components/PokemonHeight";
 import { PokemonImage } from "./components/PokemonImage";
+import { PokemonMoves } from "./components/PokemonMoves";
 import { PokemonType } from "./components/PokemonType";
 import { PokemonWeight } from "./components/PokemonWeight";
 
@@ -28,15 +29,7 @@ export default function Pokemon({ params }: { params: { name: string } }) {
           <div className="w-[1px] h-full bg-grayscale-light"></div>
           <PokemonHeight />
           <div className="w-[1px] h-full bg-grayscale-light"></div>
-          <div className="flex flex-col flex-1">
-            <div className="flex flex-col text-grayscale-dark gap-1 justify-center items-center my-auto">
-              <span className="text-grayscale-dark body-3">Ability 1</span>
-              <span className="text-grayscale-dark body-3">Ability 1</span>
-            </div>
-            <span className="text-center mt-auto caption text-grayscale-medium">
-              Moves
-            </span>
-          </div>
+          <PokemonMoves />
         </div>
       </div>
       <div className="absolute top-1 right-1">
