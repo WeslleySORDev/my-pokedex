@@ -1,15 +1,19 @@
-import { useState } from "react";
+import { SetStateAction } from "react";
 
 interface ICustomSearchInput {
-  handleSearchParam: (value: string) => void;
+  input: string;
+  setInput: (value: SetStateAction<string>) => void;
+  handleSearchParam: () => void;
 }
 
-export function CustomSearchInput({ handleSearchParam }: ICustomSearchInput) {
-  const [input, setInput] = useState("");
-
+export function CustomSearchInput({
+  handleSearchParam,
+  input,
+  setInput,
+}: ICustomSearchInput) {
   const handleKeyDown = (event: any) => {
-    if (event.key === 'Enter') {
-      handleSearchParam(input)
+    if (event.key === "Enter") {
+      handleSearchParam();
     }
   };
   return (
@@ -35,6 +39,7 @@ export function CustomSearchInput({ handleSearchParam }: ICustomSearchInput) {
         value={input}
         onChange={(e) => setInput(e.currentTarget.value)}
         onKeyDown={handleKeyDown}
+        maxLength={24}
       />
     </div>
   );

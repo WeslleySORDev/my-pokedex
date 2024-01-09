@@ -11,11 +11,11 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [input, setInput] = useState("");
   const [searchParam, setSearchParam] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-
-  const handleSearchParam = (value: string) => {
-    setSearchParam(value);
+  const handleSearchParam = () => {
+    setSearchParam(input);
   };
 
   useEffect(() => {
@@ -51,6 +51,7 @@ export default function Home() {
     );
     return allPokemonData;
   };
+
   const { isLoading, error, data } = useQuery({
     queryKey: ["pokemons", currentPage, searchParam],
     queryFn: () => fetchPokemonData(currentPage),
@@ -66,16 +67,47 @@ export default function Home() {
       <div className="flex w-full flex-col gap-2 px-3 pt-3">
         <div className="flex w-full flex-col gap-2 sm:flex-row sm:items-center sm:gap-16">
           <PokemonLogo />
-          <CustomSearchInput handleSearchParam={handleSearchParam}/>
+          <CustomSearchInput
+            handleSearchParam={handleSearchParam}
+            input={input}
+            setInput={setInput}
+          />
         </div>
-        {searchParam}
+        <div
+          className={`${
+            searchParam === "" && "invisible"
+          } flex w-full items-center justify-between text-grayscale-dark`}
+        >
+          <div className="flex items-center gap-4">
+            <span className="subtitle-1 text-grayscale-white">Filtro: </span>
+            <span className="body-1 max-w-52 truncate rounded bg-grayscale-white px-4 py-1">
+              {searchParam}
+            </span>
+          </div>
+          <button
+            onClick={() => {
+              setSearchParam("");
+              setInput("");
+            }}
+            className="rounded-md bg-grayscale-white fill-grayscale-dark p-2"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 256 256"
+            >
+              <path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path>
+            </svg>
+          </button>
+        </div>
         <Pagination
           MAX_ITEMS_ON_PAGE={MAX_ITEMS_ON_PAGE}
           handleCurrentPage={handleCurrentPage}
           currentPage={currentPage}
         />
       </div>
-      <div className="flex max-h-[calc(100lvh-172px)] min-h-[calc(100lvh-172px)] w-full flex-wrap justify-center gap-2 overflow-auto rounded-lg bg-grayscale-white px-3 py-6 shadow-inner2dp sm:max-h-[calc(100lvh-136px)] sm:min-h-[calc(100lvh-136px)]">
+      <div className="flex max-h-[calc(100lvh-212px)] min-h-[calc(100lvh-212px)] w-full flex-wrap justify-center gap-2 overflow-auto rounded-lg bg-grayscale-white px-3 py-6 shadow-inner2dp sm:max-h-[calc(100lvh-176px)] sm:min-h-[calc(100lvh-176px)]">
         {!isLoading
           ? data.map((pokemon: IPokemon) => {
               return (
