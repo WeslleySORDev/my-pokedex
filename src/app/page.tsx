@@ -11,7 +11,12 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [searchParam, setSearchParam] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+
+  const handleSearchParam = (value: string) => {
+    setSearchParam(value);
+  };
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -47,8 +52,9 @@ export default function Home() {
     return allPokemonData;
   };
   const { isLoading, error, data } = useQuery({
-    queryKey: ["pokemons", currentPage],
+    queryKey: ["pokemons", currentPage, searchParam],
     queryFn: () => fetchPokemonData(currentPage),
+    staleTime: 60 * 1000,
   });
 
   if (error) {
@@ -60,8 +66,9 @@ export default function Home() {
       <div className="flex w-full flex-col gap-2 px-3 pt-3">
         <div className="flex w-full flex-col gap-2 sm:flex-row sm:items-center sm:gap-16">
           <PokemonLogo />
-          <CustomSearchInput />
+          <CustomSearchInput handleSearchParam={handleSearchParam}/>
         </div>
+        {searchParam}
         <Pagination
           MAX_ITEMS_ON_PAGE={MAX_ITEMS_ON_PAGE}
           handleCurrentPage={handleCurrentPage}
