@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useState } from "react";
 
 type PokemonImageType = {
   url?: string;
@@ -11,6 +12,7 @@ export function PokemonImage({
   url,
   isLoading = false,
 }: PokemonImageType) {
+  const [imgSrc, setImgSrc] = useState(url);
   return (
     <>
       {isLoading ? (
@@ -46,7 +48,10 @@ export function PokemonImage({
         <div className="absolute -top-36 left-1/2 z-10 h-[200px] w-[200px] -translate-x-1/2">
           <Image
             loading="eager"
-            src={url as string}
+            src={imgSrc as string}
+            onError={() => {
+              setImgSrc("/assets/notfound.svg");
+            }}
             width={200}
             height={200}
             alt={alt as string}

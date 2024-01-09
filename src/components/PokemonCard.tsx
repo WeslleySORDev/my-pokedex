@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 type PokemonCardProps = {
   name: string;
@@ -14,6 +15,9 @@ export function PokemonCard(props: PokemonCardProps) {
       : props.id.length === 2
         ? "0" + props.id
         : props.id;
+  const [imgSrc, setImgSrc] = useState(
+    `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${formattedID}.png`,
+  );
   const setSessionCurrentPage = () => {
     sessionStorage.setItem(
       "my-pokedex-current-page",
@@ -33,7 +37,10 @@ export function PokemonCard(props: PokemonCardProps) {
         <Image
           className="transition-transform duration-150 group-hover:scale-125"
           loading="eager"
-          src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${formattedID}.png`}
+          src={imgSrc}
+          onError={() => {
+            setImgSrc("/assets/notfound.svg");
+          }}
           width={72}
           height={72}
           alt={props.name}
