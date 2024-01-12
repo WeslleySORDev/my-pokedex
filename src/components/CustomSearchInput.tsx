@@ -4,7 +4,6 @@ import { useRouter } from 'next/navigation'
 interface ICustomSearchInput {
   input: string;
   setInput: (value: SetStateAction<string>) => void;
-  handleCurrentPage: (value: number) => void;
 }
 
 export function CustomSearchInput({
