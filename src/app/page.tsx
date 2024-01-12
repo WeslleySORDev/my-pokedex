@@ -90,7 +90,7 @@ export default function Home() {
           currentPage={currentPage}
         />
       </div>
-      <div className="flex max-h-[calc(100lvh-132px)] min-h-[calc(100lvh-132px)] w-full flex-wrap content-start justify-center gap-2 overflow-auto rounded-lg bg-grayscale-white px-3 py-6 shadow-inner2dp sm:max-h-[calc(100lvh-136px)] sm:min-h-[calc(100lvh-136px)]">
+      <div className="flex max-h-[calc(100lvh-172px)] min-h-[calc(100lvh-172px)] w-full flex-wrap content-start justify-center gap-2 overflow-auto rounded-lg bg-grayscale-white px-3 py-6 shadow-inner2dp sm:max-h-[calc(100lvh-136px)] sm:min-h-[calc(100lvh-136px)]">
         {!isLoading
           ? data.map((pokemon: IPokemon) => {
             return (
