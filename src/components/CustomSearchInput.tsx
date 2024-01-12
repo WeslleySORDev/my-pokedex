@@ -1,19 +1,21 @@
 import { SetStateAction } from "react";
+import { useRouter } from 'next/navigation'
 
 interface ICustomSearchInput {
   input: string;
   setInput: (value: SetStateAction<string>) => void;
-  handleSearchParam: () => void;
+  handleCurrentPage: (value: number) => void;
 }
 
 export function CustomSearchInput({
-  handleSearchParam,
   input,
   setInput,
 }: ICustomSearchInput) {
+  const router = useRouter()
   const handleKeyDown = (event: any) => {
     if (event.key === "Enter") {
-      handleSearchParam();
+      router.push('/search/' + input, { scroll: false })
+      setInput("")
     }
   };
   return (
