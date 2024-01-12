@@ -34,7 +34,7 @@ export function CustomSearchInput({
         </svg>
       </div>
       <input
-        placeholder="Search"
+        placeholder="Digite e pressione ENTER"
         className="body-3 flex-1 bg-transparent px-1 text-grayscale-medium"
         type="text"
         value={input}
