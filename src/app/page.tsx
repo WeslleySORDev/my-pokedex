@@ -37,12 +37,14 @@ export default function Home() {
       )
       .then((res) => res.data.results);
     const allPokemonData: any = await Promise.all(
-      pokemonNames.map(async (pokemonName: { name: string }): Promise<any> => {
-        const pokemonData = await instance
-          .get<IPokemon>("pokemon/" + pokemonName.name)
-          .then((res) => res.data);
-        return pokemonData;
-      }),
+      pokemonNames.map(
+        async (pokemonName: { name: string }): Promise<any> => {
+          const pokemonData = await instance
+            .get<IPokemon>("pokemon/" + pokemonName.name)
+            .then((res) => res.data);
+          return pokemonData;
+        },
+      ),
     );
     return allPokemonData;
   };
