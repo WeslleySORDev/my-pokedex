@@ -81,3 +81,18 @@ body {
   font-weight: regular;
   line-height: 12px;
 }
+
+@media (max-width: 640px) {
+  .body-1 {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: regular;
+    line-height: 16px;
+  }
+  .subtitle-1 {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 16px;
+  }
+}

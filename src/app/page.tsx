@@ -1,6 +1,7 @@
 "use client";
 
 import { IPokemon } from "@/@types/Pokemon";
+import { CustomSearchInput } from "@/components/CustomSearchInput";
 import { Pagination } from "@/components/Pagination";
 import { PokemonCard } from "@/components/PokemonCard";
 import { PokemonLogo } from "@/components/PokemonLogo";
@@ -15,7 +16,13 @@ type MyPokedexSessionStorageProps = {
 }
 
 export default function Home() {
+  const [input, setInput] = useState("");
+  const [searchParam, setSearchParam] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+
+  const handleSearchParam = () => {
+    setSearchParam(input);
+  };
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -77,6 +84,11 @@ export default function Home() {
       <div className="flex w-full flex-col gap-2 px-3 pt-3">
         <div className="flex w-full flex-col gap-2 sm:flex-row sm:items-center sm:gap-16">
           <PokemonLogo />
+          <CustomSearchInput
+            handleSearchParam={handleSearchParam}
+            input={input}
+            setInput={setInput}
+          />
         </div>
         <Pagination
           pages={pages}
