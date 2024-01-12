@@ -3,16 +3,15 @@ import { useWindowSize } from "@/hooks/useWindowSize";
 interface IPagination {
   handleCurrentPage: (value: number) => void;
   currentPage: number;
-  MAX_ITEMS_ON_PAGE: number;
+  pages: number;
 }
 
 export function Pagination({
   handleCurrentPage,
   currentPage,
-  MAX_ITEMS_ON_PAGE,
+  pages,
 }: IPagination) {
   const size = useWindowSize();
-  const pages = Math.ceil(1302 / MAX_ITEMS_ON_PAGE);
   const MAX_ITEMS = size.width <= 375 ? 3 : size.width <= 768 ? 5 : 9;
   const MAX_LEFT = (MAX_ITEMS - 1) / 2;
   const maxFirst = Math.max(pages - (MAX_ITEMS - 1), 1);
