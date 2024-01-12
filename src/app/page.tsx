@@ -9,18 +9,22 @@ import { instance } from "@/services/axios";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 
+type MyPokedexSessionStorageProps = {
+  currentPage: number;
+  scrollTop: number;
+}
+
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const sessionStorageCurrentPage = sessionStorage.getItem(
-        "my-pokedex-current-page",
+      const sessionStorageMyPokedex = sessionStorage.getItem(
+        "my-pokedex",
       );
-      if (sessionStorageCurrentPage)
-        setCurrentPage(parseInt(sessionStorageCurrentPage));
-      else {
-        setCurrentPage(1)
+      if (sessionStorageMyPokedex) {
+        let jsonSessionStorageMyPokedex: MyPokedexSessionStorageProps = JSON.parse(sessionStorageMyPokedex)
+        setCurrentPage(jsonSessionStorageMyPokedex.currentPage);
       }
     }
   }, []);
@@ -29,9 +33,13 @@ export default function Home() {
 
   const handleCurrentPage = (value: number) => {
     setCurrentPage(value);
+    let jsonSessionStorageMyPokedex = JSON.stringify({
+      currentPage: value,
+      scrollTop: 0
+    } as MyPokedexSessionStorageProps)
     sessionStorage.setItem(
-      "my-pokedex-current-page",
-      value as unknown as string,
+      "my-pokedex",
+      jsonSessionStorageMyPokedex
     );
   };
 
