@@ -29,7 +29,7 @@ export default function Home() {
     }
   }, []);
 
-  const MAX_ITEMS_ON_PAGE = 50;
+  const MAX_ITEMS_ON_PAGE = 25;
 
   const handleCurrentPage = (value: number) => {
     setCurrentPage(value);

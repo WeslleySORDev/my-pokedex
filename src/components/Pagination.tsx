@@ -35,7 +35,7 @@ export function Pagination({
         </button>
         <div
           className={`ml-auto flex items-center gap-2 text-xs sm:text-sm ${
-            !(currentPage > MAX_LEFT + 1) && "invisible"
+            currentPage < (MAX_LEFT + 2) && "invisible"
           }`}
         >
           <button
@@ -68,15 +68,15 @@ export function Pagination({
       <div className="flex items-center gap-4 xs:gap-6 sm:gap-8">
         <div
           className={`ml-auto flex items-center gap-2 text-xs sm:text-sm ${
-            currentPage >= pages - MAX_LEFT && "invisible"
+            currentPage > pages - (MAX_LEFT + 1) && "invisible"
           }`}
         >
           <span className="text-grayscale-dark">...</span>
           <button
-            onClick={() => handleCurrentPage(27)}
+            onClick={() => handleCurrentPage(pages)}
             className="text-grayscale-dark"
           >
-            27
+            {pages}
           </button>
         </div>
         <button
