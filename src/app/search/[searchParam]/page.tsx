@@ -14,7 +14,7 @@ export default function Search() {
     const pokemonNames = await instance
       .get("pokemon/?limit=1304&offset=0")
       .then((res) => res.data.results);
-    const filteredPokemonNames = pokemonNames.filter(pokemon => pokemon.name.includes(params.searchParam))
+    const filteredPokemonNames = pokemonNames.filter((pokemon: { name: string }) => pokemon.name.includes(params.searchParam as string))
     const allPokemonData: any = filteredPokemonNames.length > 0 ? await Promise.all(
       filteredPokemonNames.map(
         async (pokemonName: { name: string }): Promise<any> => {
