@@ -10,7 +10,6 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [input, setInput] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
@@ -20,6 +19,9 @@ export default function Home() {
       );
       if (sessionStorageCurrentPage)
         setCurrentPage(parseInt(sessionStorageCurrentPage));
+      else {
+        setCurrentPage(1)
+      }
     }
   }, []);
 
@@ -27,6 +29,10 @@ export default function Home() {
 
   const handleCurrentPage = (value: number) => {
     setCurrentPage(value);
+    sessionStorage.setItem(
+      "my-pokedex-current-page",
+      value as unknown as string,
+    );
   };
 
   const fetchPokemonData = async (page: number) => {
@@ -78,7 +84,6 @@ export default function Home() {
                 name={pokemon.name}
                 id={pokemon.id.toString()}
                 key={pokemon.name + pokemon.id}
-                currentPage={currentPage}
               />
             );
           })

@@ -5,7 +5,6 @@ import { useState } from "react";
 type PokemonCardProps = {
   name: string;
   id: string;
-  currentPage?: number;
 };
 
 export function PokemonCard(props: PokemonCardProps) {
@@ -18,17 +17,10 @@ export function PokemonCard(props: PokemonCardProps) {
   const [imgSrc, setImgSrc] = useState(
     `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${formattedID}.png`,
   );
-  const setSessionCurrentPage = () => {
-    sessionStorage.setItem(
-      "my-pokedex-current-page",
-      props.currentPage?.toString() as string,
-    );
-  };
   return (
     <Link
       href={`/pokemon/${props.name}`}
       className="group relative flex h-[108px] w-[104px] flex-col rounded-lg bg-grayscale-white shadow-drop2dp"
-      onClick={setSessionCurrentPage}
     >
       <span className="caption px-2 pt-1 text-end text-grayscale-medium group-hover:font-bold">
         #{formattedID}
