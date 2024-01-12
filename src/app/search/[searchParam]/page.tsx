@@ -9,12 +9,12 @@ import { PokemonCard } from "@/components/PokemonCard";
 import { SkeletonCard } from "@/components/SkeletonCard";
 
 export default function Search() {
-  const params = useParams()
+  const params: { searchParam: string } = useParams()
   const fetchPokemonData = async () => {
     const pokemonNames = await instance
       .get("pokemon/?limit=1304&offset=0")
       .then((res) => res.data.results);
-    const filteredPokemonNames = pokemonNames.filter((pokemon: { name: string }) => pokemon.name.includes(params.searchParam as string))
+    const filteredPokemonNames = pokemonNames.filter((pokemon: { name: string }) => pokemon.name.includes(params.searchParam.toLowerCase() as string))
     const allPokemonData: any = filteredPokemonNames.length > 0 ? await Promise.all(
       filteredPokemonNames.map(
         async (pokemonName: { name: string }): Promise<any> => {
