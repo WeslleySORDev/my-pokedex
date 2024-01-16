@@ -1,4 +1,4 @@
-export function PokeballBG() {
+export function PokeballIcon() {
   return (
     <div className="absolute right-1 top-1">
       <svg

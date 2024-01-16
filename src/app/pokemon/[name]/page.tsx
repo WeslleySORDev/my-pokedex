@@ -1,15 +1,17 @@
 "use client";
 
-import { instance } from "@/services/axios";
-import { ArrowBack } from "@/components/pokemon/ArrowBack";
-import { LoadingPage } from "@/components/pokemon/LoadingPage";
-import { PokeballBG } from "@/components/pokemon/PokeballBG";
-import { PokemonHeight } from "@/components/pokemon/PokemonHeight";
-import { PokemonImage } from "@/components/pokemon/PokemonImage";
-import { PokemonMoves } from "@/components/pokemon/PokemonMoves";
-import { PokemonType } from "@/components/pokemon/PokemonType";
-import { PokemonWeight } from "@/components/pokemon/PokemonWeight";
 import { useQuery } from "@tanstack/react-query";
+import { instance } from "@/services/axios";
+import { LoadingPage } from "@/components/pokemon/loading-page";
+import { PokemonImage } from "@/components/pokemon/pokemon-image";
+import { PokemonType } from "@/components/pokemon/pokemon-type";
+import { Height } from "@/components/pokemon/attribute/height";
+import { Weight } from "@/components/pokemon/attribute/weight";
+import { Moves } from "@/components/pokemon/attribute/moves";
+import { PokeballIcon } from "@/components/pokemon/icons/pokeball-icon";
+import { Title } from "@/components/pokemon/title";
+import { BaseStats } from "@/components/pokemon/base-stats";
+import { pokemonBgVariants } from "@/utils/variables";
 
 type PokemonType = {
   abilities: {
@@ -42,26 +44,6 @@ type PokemonType = {
 };
 
 export default function Pokemon({ params }: { params: { name: string } }) {
-  const pokemonBgVariants: any = {
-    bug: "bg-type-bug",
-    dark: "bg-type-dark",
-    dragon: "bg-type-dragon",
-    electric: "bg-type-electric",
-    fairy: "bg-type-fairy",
-    fighting: "bg-type-fighting",
-    fire: "bg-type-fire",
-    flying: "bg-type-flying",
-    ghost: "bg-type-ghost",
-    normal: "bg-type-normal",
-    grass: "bg-type-grass",
-    ground: "bg-type-ground",
-    ice: "bg-type-ice",
-    poison: "bg-type-poison",
-    psychic: "bg-type-psychic",
-    rock: "bg-type-rock",
-    steel: "bg-type-steel",
-    water: "bg-type-water",
-  };
   const fetchPokemonData = async (name: string) => {
     const data = await instance
       .get<PokemonType>(`pokemon/${name}`)
@@ -82,29 +64,13 @@ export default function Pokemon({ params }: { params: { name: string } }) {
         : data.id.toString().length === 2
           ? "0" + data.id.toString()
           : data.id.toString();
-    const getProgressBar = (value: number) => {
-      const biggestStats = Math.max(...data.stats.map((o) => o.base_stat));
-      const progressBar =
-        biggestStats < 100
-          ? Math.round((value / 100) * 100)
-          : Math.round((value / biggestStats) * 100);
-      return progressBar.toString() + "%";
-    };
     return (
       <main
         className={`relative mx-auto flex max-h-screen min-h-screen max-w-[640px] flex-col p-1 ${
           pokemonBgVariants[data.types[0].type.name]
         }`}
       >
-        <div className="flex gap-2 px-5 pb-6 pt-5">
-          <ArrowBack />
-          <h1 className="headline flex-1 truncate text-grayscale-white">
-            {data.name[0].toUpperCase() + data.name.slice(1)}
-          </h1>
-          <span className="subtitle-2 text-grayscale-white">
-            #{formattedID}
-          </span>
-        </div>
+        <Title name={data.name} formattedID={formattedID} />
         <div className="relative mt-auto flex max-h-[576px] min-h-[576px] w-full flex-col gap-4 rounded-lg bg-grayscale-white px-2 pb-5 pt-14 shadow-inner2dp sm:px-5">
           <PokemonImage
             url={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${formattedID}.png`}
@@ -129,11 +95,11 @@ export default function Pokemon({ params }: { params: { name: string } }) {
             About
           </span>
           <div className="flex h-16 w-full">
-            <PokemonWeight weight={data.weight} />
+            <Weight weight={data.weight} />
             <div className="h-full w-[1px] bg-grayscale-light"></div>
-            <PokemonHeight height={data.height} />
+            <Height height={data.height} />
             <div className="h-full w-[1px] bg-grayscale-light"></div>
-            <PokemonMoves abilities={data.abilities} />
+            <Moves abilities={data.abilities} />
           </div>
           <span className="body-3 line-clamp-6 w-full text-grayscale-dark">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
@@ -145,76 +111,9 @@ export default function Pokemon({ params }: { params: { name: string } }) {
           <span className="subtitle-1 text-center text-grayscale-wireframe">
             Base Stats
           </span>
-          <div className="flex w-full gap-4">
-            <div className="flex flex-col">
-              <span className="subtitle-3 max-h-4 text-end text-grayscale-wireframe">
-                HP
-              </span>
-              <span className="subtitle-3 max-h-4 text-end text-grayscale-wireframe">
-                ATK
-              </span>
-              <span className="subtitle-3 max-h-4 text-end text-grayscale-wireframe">
-                DEF
-              </span>
-              <span className="subtitle-3 max-h-4 text-end text-grayscale-wireframe">
-                SATK
-              </span>
-              <span className="subtitle-3 max-h-4 text-end text-grayscale-wireframe">
-                SDEF
-              </span>
-              <span className="subtitle-3 max-h-4 text-end text-grayscale-wireframe">
-                SPD
-              </span>
-            </div>
-            <div className="min-h-full w-[1px] bg-grayscale-light"></div>
-            <div className="flex flex-col">
-              {data.stats.map((stat, index) => {
-                return (
-                  <span
-                    key={
-                      stat.base_stat +
-                      Math.floor(Math.random() * (999 - 1 + 1) + 1)
-                    }
-                    className="body-3 max-h-4 text-grayscale-dark"
-                  >
-                    {stat.base_stat.toString().length === 1
-                      ? "00" + stat.base_stat.toString()
-                      : stat.base_stat.toString().length === 2
-                        ? "0" + stat.base_stat.toString()
-                        : stat.base_stat.toString()}
-                  </span>
-                );
-              })}
-            </div>
-            <div className="flex w-full flex-col">
-              {Array.from({
-                length: 6,
-              }).map((_, index) => {
-                return (
-                  <div
-                    key={`Progress Bar Stats key ` + index}
-                    className="relative flex max-h-4 w-full flex-1 items-center"
-                  >
-                    <div
-                      className={`h-1 w-full rounded opacity-[0.2] ${
-                        pokemonBgVariants[data.types[0].type.name]
-                      }`}
-                    ></div>
-                    <div
-                      className={`absolute left-0 top-1/2 h-1 w-0 -translate-y-1/2 animate-widthAnimation rounded-l bg-opacity-100 transition-all duration-75 ${
-                        pokemonBgVariants[data.types[0].type.name]
-                      }`}
-                      style={{
-                        width: getProgressBar(data.stats[index].base_stat),
-                      }}
-                    ></div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
+          <BaseStats stats={data.stats} types={data.types} />
         </div>
-        <PokeballBG />
+        <PokeballIcon />
       </main>
     );
   }

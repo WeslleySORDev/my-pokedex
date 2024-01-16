@@ -1,8 +1,8 @@
-type PokemonWeightType = {
+type WeightProps = {
   weight?: number;
 };
 
-export function PokemonWeight({ weight }: PokemonWeightType) {
+export function Weight({ weight }: WeightProps) {
   return (
     <div className="flex flex-1 flex-col">
       <div className="my-auto flex justify-center gap-2 fill-grayscale-dark text-grayscale-dark">

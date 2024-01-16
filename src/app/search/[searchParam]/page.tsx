@@ -1,12 +1,12 @@
 "use client";
-import { IPokemon } from "@/types/Pokemon";
-import { instance } from "@/services/axios";
-import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { useQuery } from "@tanstack/react-query";
+import { instance } from "@/services/axios";
 import { PokemonCard } from "@/components/home/cards/pokemon-card";
 import { SkeletonCard } from "@/components/home/cards/skeleton-card";
 import { PokemonLogo } from "@/components/home/header/pokemon-logo";
+import { IPokemon } from "@/types/Pokemon";
 
 export default function Search() {
   const params: { searchParam: string } = useParams();

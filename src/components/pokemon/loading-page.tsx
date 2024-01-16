@@ -1,10 +1,10 @@
-import { ArrowBack } from "./ArrowBack";
-import { PokeballBG } from "./PokeballBG";
-import { PokemonHeight } from "./PokemonHeight";
-import { PokemonImage } from "./PokemonImage";
-import { PokemonMoves } from "./PokemonMoves";
-import { PokemonType } from "./PokemonType";
-import { PokemonWeight } from "./PokemonWeight";
+import { PokemonImage } from "./pokemon-image";
+import { PokemonType } from "./pokemon-type";
+import { Height } from "@/components/pokemon/attribute/height";
+import { Weight } from "@/components/pokemon/attribute/weight";
+import { Moves } from "@/components/pokemon/attribute/moves";
+import { PokeballIcon } from "@/components/pokemon/icons/pokeball-icon";
+import { ArrowBack } from "@/components/pokemon/icons/arrow-back-icon";
 
 export function LoadingPage() {
   return (
@@ -26,11 +26,11 @@ export function LoadingPage() {
           About
         </span>
         <div className="flex h-16 w-full">
-          <PokemonWeight />
+          <Weight />
           <div className="h-full w-[1px] bg-grayscale-light"></div>
-          <PokemonHeight />
+          <Height />
           <div className="h-full w-[1px] bg-grayscale-light"></div>
-          <PokemonMoves />
+          <Moves />
         </div>
         <span className="body-3 line-clamp-6 w-full text-grayscale-dark">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc iaculis
@@ -106,7 +106,7 @@ export function LoadingPage() {
           </div>
         </div>
       </div>
-      <PokeballBG />
+      <PokeballIcon />
     </main>
   );
 }

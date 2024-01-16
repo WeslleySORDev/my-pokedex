@@ -1,4 +1,4 @@
-type PokemonMovesType = {
+type PokemonMovesProps = {
   abilities?: {
     ability: {
       name: string;
@@ -9,7 +9,7 @@ type PokemonMovesType = {
   }[];
 };
 
-export function PokemonMoves({ abilities }: PokemonMovesType) {
+export function Moves({ abilities }: PokemonMovesProps) {
   return (
     <div className="flex flex-1 flex-col">
       <div className="my-auto flex flex-col items-center justify-center gap-1 text-grayscale-dark">

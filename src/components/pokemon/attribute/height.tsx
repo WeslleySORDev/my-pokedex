@@ -1,8 +1,8 @@
-type PokemonHeightType = {
+type HeightProps = {
   height?: number;
 };
 
-export function PokemonHeight({ height }: PokemonHeightType) {
+export function Height({ height }: HeightProps) {
   return (
     <div className="flex flex-1 flex-col">
       <div className="my-auto flex justify-center gap-2 fill-grayscale-dark text-grayscale-dark">
@@ -17,7 +17,6 @@ export function PokemonHeight({ height }: PokemonHeightType) {
             fill="#1D1D1D"
           />
         </svg>
-
         <span className="body-3">{height ? height : "9,9"} m</span>
       </div>
       <span className="caption mt-auto text-center text-grayscale-medium">
