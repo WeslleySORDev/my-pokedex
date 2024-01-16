@@ -1,15 +1,14 @@
 "use client";
 
 import { instance } from "@/services/axios";
-import { ArrowBack } from "./components/ArrowBack";
-import { LoadingPage } from "./components/LoadingPage";
-import { PokeballBG } from "./components/PokeballBG";
-import { PokemonHeight } from "./components/PokemonHeight";
-import { PokemonImage } from "./components/PokemonImage";
-import { PokemonMoves } from "./components/PokemonMoves";
-import { PokemonType } from "./components/PokemonType";
-import { PokemonWeight } from "./components/PokemonWeight";
-import { IPokemon } from "@/types/Pokemon";
+import { ArrowBack } from "@/components/pokemon/ArrowBack";
+import { LoadingPage } from "@/components/pokemon/LoadingPage";
+import { PokeballBG } from "@/components/pokemon/PokeballBG";
+import { PokemonHeight } from "@/components/pokemon/PokemonHeight";
+import { PokemonImage } from "@/components/pokemon/PokemonImage";
+import { PokemonMoves } from "@/components/pokemon/PokemonMoves";
+import { PokemonType } from "@/components/pokemon/PokemonType";
+import { PokemonWeight } from "@/components/pokemon/PokemonWeight";
 import { useQuery } from "@tanstack/react-query";
 
 type PokemonType = {
