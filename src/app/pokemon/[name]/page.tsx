@@ -9,7 +9,7 @@ import { PokemonImage } from "./components/PokemonImage";
 import { PokemonMoves } from "./components/PokemonMoves";
 import { PokemonType } from "./components/PokemonType";
 import { PokemonWeight } from "./components/PokemonWeight";
-import { IPokemon } from "@/@types/Pokemon";
+import { IPokemon } from "@/types/Pokemon";
 import { useQuery } from "@tanstack/react-query";
 
 type PokemonType = {

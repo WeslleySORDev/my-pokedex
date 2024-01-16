@@ -1,24 +1,19 @@
 "use client";
 
-import { IPokemon } from "@/@types/Pokemon";
-import { Pagination } from "@/components/pagination";
-import { PokemonCard } from "@/components/cards/pokemon-card";
-import { SkeletonCard } from "@/components/cards/skeleton-card";
+import { useEffect, useState } from "react";
 import { instance } from "@/services/axios";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
-import { CustomInput } from "@/components/custom-input";
-import { PokemonLogo } from "@/components/pokemon-logo";
+import { IPokemon } from "@/types/Pokemon";
+import { PokemonCard } from "@/components/cards/pokemon-card";
+import { SkeletonCard } from "@/components/cards/skeleton-card";
+import { Header } from "@/components/header";
 
 type MyPokedexSessionStorageProps = {
   currentPage: number;
   scrollTop: number;
 };
-
 export default function Home() {
-  const [input, setInput] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-
   useEffect(() => {
     if (typeof window !== "undefined") {
       const sessionStorageMyPokedex = sessionStorage.getItem("my-pokedex");
@@ -59,7 +54,6 @@ export default function Home() {
     );
     return allPokemonData;
   };
-  const pages = Math.ceil(1302 / MAX_ITEMS_ON_PAGE);
   const { isLoading, error, data } = useQuery({
     queryKey: ["pokemons", currentPage],
     queryFn: () => fetchPokemonData(currentPage),
@@ -70,19 +64,13 @@ export default function Home() {
   }
 
   return (
-    <main className="mx-auto flex max-w-[640px] flex-col items-center justify-between gap-4 bg-identity-primary p-1">
-      <div className="flex w-full flex-col gap-2 px-3 pt-3">
-        <div className="flex w-full flex-col gap-2 sm:flex-row sm:items-center sm:gap-16">
-          <PokemonLogo />
-          <CustomInput input={input} setInput={setInput} />
-        </div>
-        <Pagination
-          pages={pages}
-          handleCurrentPage={handleCurrentPage}
-          currentPage={currentPage}
-        />
-      </div>
-      <div className="flex max-h-[calc(100lvh-172px)] min-h-[calc(100lvh-172px)] w-full flex-wrap content-start justify-center gap-2 overflow-auto rounded-lg bg-grayscale-white px-3 py-6 shadow-inner2dp sm:max-h-[calc(100lvh-136px)] sm:min-h-[calc(100lvh-136px)]">
+    <div className="mx-auto flex max-w-[640px] flex-col items-center justify-between gap-4 bg-identity-primary p-1">
+      <Header
+        MAX_ITEMS_ON_PAGE={MAX_ITEMS_ON_PAGE}
+        currentPage={currentPage}
+        handleCurrentPage={handleCurrentPage}
+      />
+      <main className="flex max-h-[calc(100lvh-172px)] min-h-[calc(100lvh-172px)] w-full flex-wrap content-start justify-center gap-2 overflow-auto rounded-lg bg-grayscale-white px-3 py-6 shadow-inner2dp sm:max-h-[calc(100lvh-136px)] sm:min-h-[calc(100lvh-136px)]">
         {!isLoading
           ? data.map((pokemon: IPokemon) => {
               return (
@@ -96,7 +84,7 @@ export default function Home() {
           : Array.from({ length: MAX_ITEMS_ON_PAGE }, (_, i) => (
               <SkeletonCard key={i} />
             ))}
-      </div>
-    </main>
+      </main>
+    </div>
   );
 }

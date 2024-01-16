@@ -1,5 +1,5 @@
 "use client";
-import { IPokemon } from "@/@types/Pokemon";
+import { IPokemon } from "@/types/Pokemon";
 import { PokemonLogo } from "@/components/PokemonLogo";
 import { instance } from "@/services/axios";
 import { useQuery } from "@tanstack/react-query";
