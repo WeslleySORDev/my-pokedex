@@ -1,5 +1,5 @@
-"use client"
-import { PokemonLogo } from "@/components/PokemonLogo";
+"use client";
+import { PokemonLogo } from "@/components/header/pokemon-logo";
 import Link from "next/link";
 
 export default function Search() {
@@ -19,14 +19,17 @@ export default function Search() {
         </div>
         <Link
           href="/"
-          className="rounded-md bg-[#7b8795] px-4 py-2 text-grayscale-white hover:brightness-95 body-1"
+          className="body-1 rounded-md bg-[#7b8795] px-4 py-2 text-grayscale-white hover:brightness-95"
         >
           Página Inicial
         </Link>
       </div>
-      <div className="flex max-h-[calc(100lvh-116px)] min-h-[calc(100lvh-116px)] content-start w-full flex-wrap justify-center gap-2 overflow-auto rounded-lg bg-grayscale-white px-3 py-6 shadow-inner2dp sm:max-h-[calc(100lvh-116px)] sm:min-h-[calc(100lvh-116px)]">
-        <h1 className="text-center headline">Nenhum resultado encontrado, volte para a pagina inicial e procure por outra coisa.</h1>
+      <div className="flex max-h-[calc(100lvh-116px)] min-h-[calc(100lvh-116px)] w-full flex-wrap content-start justify-center gap-2 overflow-auto rounded-lg bg-grayscale-white px-3 py-6 shadow-inner2dp sm:max-h-[calc(100lvh-116px)] sm:min-h-[calc(100lvh-116px)]">
+        <h1 className="headline text-center">
+          Nenhum resultado encontrado, volte para a pagina inicial e procure por
+          outra coisa.
+        </h1>
       </div>
     </main>
-  )
+  );
 }
