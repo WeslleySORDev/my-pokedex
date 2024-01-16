@@ -4,9 +4,9 @@ import { instance } from "@/services/axios";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { PokemonCard } from "@/components/cards/pokemon-card";
-import { SkeletonCard } from "@/components/cards/skeleton-card";
-import { PokemonLogo } from "@/components/header/pokemon-logo";
+import { PokemonCard } from "@/components/home/cards/pokemon-card";
+import { SkeletonCard } from "@/components/home/cards/skeleton-card";
+import { PokemonLogo } from "@/components/home/header/pokemon-logo";
 
 export default function Search() {
   const params: { searchParam: string } = useParams();

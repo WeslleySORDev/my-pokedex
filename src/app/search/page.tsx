@@ -1,5 +1,5 @@
 "use client";
-import { PokemonLogo } from "@/components/header/pokemon-logo";
+import { PokemonLogo } from "@/components/home/header/pokemon-logo";
 import Link from "next/link";
 
 export default function Search() {

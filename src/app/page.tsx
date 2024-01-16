@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import { instance } from "@/services/axios";
 import { useQuery } from "@tanstack/react-query";
 import { IPokemon } from "@/types/Pokemon";
-import { PokemonCard } from "@/components/cards/pokemon-card";
-import { SkeletonCard } from "@/components/cards/skeleton-card";
-import { Header } from "@/components/header";
+import { PokemonCard } from "@/components/home/cards/pokemon-card";
+import { SkeletonCard } from "@/components/home/cards/skeleton-card";
+import { Header } from "@/components/home/header";
 
 type MyPokedexSessionStorageProps = {
   currentPage: number;
