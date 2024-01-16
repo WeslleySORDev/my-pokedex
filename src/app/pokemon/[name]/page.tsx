@@ -11,7 +11,6 @@ import { Moves } from "@/components/pokemon/attribute/moves";
 import { PokeballIcon } from "@/components/pokemon/icons/pokeball-icon";
 import { Title } from "@/components/pokemon/title";
 import { BaseStats } from "@/components/pokemon/base-stats";
-import { pokemonBgVariants } from "@/utils/variables";
 
 type PokemonType = {
   abilities: {
@@ -44,6 +43,26 @@ type PokemonType = {
 };
 
 export default function Pokemon({ params }: { params: { name: string } }) {
+  const pokemonBgVariants: any = {
+    bug: "bg-type-bug",
+    dark: "bg-type-dark",
+    dragon: "bg-type-dragon",
+    electric: "bg-type-electric",
+    fairy: "bg-type-fairy",
+    fighting: "bg-type-fighting",
+    fire: "bg-type-fire",
+    flying: "bg-type-flying",
+    ghost: "bg-type-ghost",
+    normal: "bg-type-normal",
+    grass: "bg-type-grass",
+    ground: "bg-type-ground",
+    ice: "bg-type-ice",
+    poison: "bg-type-poison",
+    psychic: "bg-type-psychic",
+    rock: "bg-type-rock",
+    steel: "bg-type-steel",
+    water: "bg-type-water",
+  };
   const fetchPokemonData = async (name: string) => {
     const data = await instance
       .get<PokemonType>(`pokemon/${name}`)
